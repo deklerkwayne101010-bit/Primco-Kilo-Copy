@@ -61,7 +61,6 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [copiedSku, setCopiedSku] = useState<string | null>(null);
-  const [ladderOpen, setLadderOpen] = useState(false);
 
   // Sync when incoming props change
   useEffect(() => {
@@ -74,11 +73,10 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
     if (slug === 'all' || selectedCategory === slug) {
       setSelectedCategory('all');
       setSelectedSubcategory('all');
-      setLadderOpen(false);
     } else {
       setSelectedCategory(slug);
-      setSelectedSubcategory('all');
-      setLadderOpen(true);
+      // Drill-down: a subcategory must be chosen before products show
+      setSelectedSubcategory('');
     }
     setCurrentPage(1);
   };
@@ -111,11 +109,16 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
     addToQuote(product.sku, qty);
   };
 
+  // A main category is selected but no subcategory chosen yet (main -> sub -> product)
+  const awaitingSubcategory = selectedCategory !== 'all' && selectedSubcategory === '';
+
   // Filtering + sorting (identical matching to the standard catalogue)
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((item) => {
       if (selectedRange !== 'all' && item.range !== selectedRange) return false;
       if (selectedCategory !== 'all' && item.category !== selectedCategory) return false;
+      // Within a main category, a subcategory drives the product list
+      if (selectedCategory !== 'all' && selectedSubcategory === '') return false;
       if (selectedSubcategory !== 'all' && item.subcategory !== selectedSubcategory) return false;
       if (selectedBrand !== 'all' && item.brand.toLowerCase() !== selectedBrand.toLowerCase()) return false;
       if (inStockOnly && !item.inStock) return false;
@@ -279,33 +282,8 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
         <div className="container py-3.5 flex flex-col gap-3">
           {/* Row 1: category pills + controls */}
           <div className="flex flex-col lg:flex-row lg:items-center gap-3">
-            {/* Big category dropdown (all main categories) */}
-            <div className="flex-1 min-w-0">
-              <label className="block text-[10px] font-extrabold uppercase tracking-[0.18em] text-[var(--gold)] mb-1.5">
-                Main Category
-              </label>
-              <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--gold)] pointer-events-none">
-                  {currentCategoryObj ? getCategoryIcon(currentCategoryObj.iconName) : <Package size={18} />}
-                </span>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => handleSelectCategory(e.target.value)}
-                  className="w-full h-14 pl-12 pr-12 bg-[#111418] border border-[var(--line)] rounded-[var(--radius-lg)] text-sm font-bold text-white outline-none cursor-pointer focus:border-[var(--gold)] focus:shadow-[var(--glow-gold)] transition-all appearance-none"
-                  aria-label="Select main category"
-                >
-                  <option value="all">All Categories</option>
-                  {CATEGORIES.map((cat) => (
-                    <option key={cat.slug} value={cat.slug}>
-                      {cat.name} ({cat.productCount})
-                    </option>
-                  ))}
-                </select>
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--gold)] pointer-events-none">
-                  <ChevronDown size={18} />
-                </span>
-              </div>
-            </div>
+            {/* Main categories now live in the left-hand rail */}
+            <div className="flex-1" />
 
             {/* Controls: view + sort */}
             <div className="flex items-center gap-2.5 shrink-0">
@@ -460,42 +438,169 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
           RESULTS
           ============================================================ */}
       <Section size="md" background="wash" borderBlock>
-        {totalItems === 0 ? (
-          <div className="glass-panel max-w-xl mx-auto text-center py-16 px-8 rounded-[var(--radius-xl)]">
-            <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[var(--gold)]/15 border border-[var(--gold)]/40 flex items-center justify-center text-[var(--gold)] shadow-[var(--glow-gold)]">
-              <Search size={28} />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">No products match</h3>
-            <p className="text-sm text-[var(--muted)] leading-relaxed mb-6">
-              Try a different keyword, or clear your filters to browse the full
-              catalogue. You can also request a hard-to-find part via our sourcing
-              desk.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-col md:flex-row gap-6 items-start">
+          {/* -------- LEFT: MAIN CATEGORIES RAIL -------- */}
+          <aside className="w-full md:w-56 shrink-0 md:sticky md:top-24">
+            <div className="glass-panel rounded-[var(--radius-xl)] p-4 flex flex-col gap-1 border border-[var(--line)]">
+              <h3 className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[var(--muted)] px-1 pb-2">
+                Main Categories
+              </h3>
+
+              {/* All Products rung */}
               <button
                 type="button"
-                onClick={clearAllFilters}
-                className="button-secondary"
+                onClick={() => handleSelectCategory('all')}
+                className={`main-rung w-full text-left px-3 py-2.5 rounded-[var(--radius-md)] text-xs font-bold flex items-center justify-between gap-2 transition-all cursor-pointer ${
+                  selectedCategory === 'all'
+                    ? 'bg-[var(--grad-premium)] text-white shadow-[var(--glow-premium)]'
+                    : 'text-[var(--silver)] hover:bg-[#161c22] hover:text-white'
+                }`}
               >
-                <span>Clear all filters</span>
+                <span className="flex items-center gap-2">
+                  <Package size={14} className={selectedCategory === 'all' ? 'text-white' : 'text-[var(--gold)]'} />
+                  All Products
+                </span>
+                <span className="text-[10px] font-mono opacity-70">{PRODUCTS.length}</span>
               </button>
-              <button
-                type="button"
-                onClick={() => onNavigate('parts-sourcing')}
-                className="button"
-              >
-                <span>Request Custom Sourcing</span>
-                <ArrowRight size={15} />
-              </button>
+
+              {CATEGORIES.map((cat) => {
+                const active = selectedCategory === cat.slug;
+                return (
+                  <button
+                    key={cat.slug}
+                    type="button"
+                    onClick={() => handleSelectCategory(cat.slug)}
+                    className={`main-rung w-full text-left px-3 py-2.5 rounded-[var(--radius-md)] text-xs font-semibold flex items-center justify-between gap-2 transition-all cursor-pointer ${
+                      active
+                        ? 'bg-[var(--grad-premium)] text-white shadow-[var(--glow-premium)]'
+                        : 'text-[var(--silver)] hover:bg-[#161c22] hover:text-white'
+                    }`}
+                  >
+                    <span className="flex items-center gap-2 truncate">
+                      <span className={active ? 'text-white' : 'text-[var(--gold)]'}>
+                        {getCategoryIcon(cat.iconName)}
+                      </span>
+                      <span className="truncate">{cat.name}</span>
+                    </span>
+                    <span className={`text-[10px] font-mono shrink-0 ${active ? 'opacity-80' : 'text-[var(--muted)]'}`}>
+                      {cat.productCount}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
-          </div>
-        ) : (
-          <>
-            <div className="flex flex-col lg:flex-row gap-6 items-start">
-              <div className="flex-1 min-w-0">
-                {viewMode === 'grid' ? (
-                  /* -------- GRID VIEW (premium cards) -------- */
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          </aside>
+
+          {/* -------- MIDDLE: SUBCATEGORIES RAIL (drill-down) -------- */}
+          {selectedCategory !== 'all' && currentCategoryObj && (
+            <aside className="sub-rail w-full md:w-60 shrink-0 md:sticky md:top-24">
+              <div className="glass-panel rounded-[var(--radius-xl)] p-4 flex flex-col gap-1.5 border border-[var(--gold)]/30 shadow-[var(--glow-premium)]">
+                <div className="flex items-center gap-2 pb-2 mb-1 border-b border-[var(--line)]">
+                  <span className="text-[var(--gold)]">
+                    {getCategoryIcon(currentCategoryObj.iconName)}
+                  </span>
+                  <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+                    {currentCategoryObj.name}
+                  </h3>
+                </div>
+
+                <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[var(--muted)] px-1 pb-1">
+                  Subcategories
+                </span>
+
+                {/* All <Category> rung */}
+                <button
+                  type="button"
+                  onClick={() => handleSelectSubcategory(currentCategoryObj.slug, 'all')}
+                  className={`sub-rung w-full text-left px-3 py-2.5 rounded-[var(--radius-md)] text-xs font-bold flex items-center justify-between gap-2 transition-all cursor-pointer ${
+                    selectedSubcategory === 'all'
+                      ? 'bg-[var(--grad-premium)] text-white shadow-[var(--glow-premium)]'
+                      : 'text-[var(--silver)] hover:bg-[#161c22] hover:text-white'
+                  }`}
+                >
+                  <span>All {currentCategoryObj.name}</span>
+                  <span className="text-[10px] font-mono opacity-70">
+                    {currentCategoryObj.productCount}
+                  </span>
+                </button>
+
+                {currentCategoryObj.subcategories.map((sub) => {
+                  const active = selectedSubcategory === sub.slug;
+                  return (
+                    <button
+                      key={sub.slug}
+                      type="button"
+                      onClick={() => handleSelectSubcategory(currentCategoryObj.slug, sub.slug)}
+                      className={`sub-rung w-full text-left px-3 py-2.5 rounded-[var(--radius-md)] text-xs font-semibold flex items-center justify-between gap-2 transition-all cursor-pointer ${
+                        active
+                          ? 'bg-[var(--blue)] text-white shadow-[var(--glow-sm)]'
+                          : 'text-[var(--silver)] hover:bg-[#161c22] hover:text-white'
+                      }`}
+                    >
+                      <span className="truncate">{sub.name}</span>
+                      <span className={`text-[10px] font-mono shrink-0 ${active ? 'opacity-80' : 'text-[var(--muted)]'}`}>
+                        {sub.count}
+                      </span>
+                    </button>
+                  );
+                })}
+
+                <div className="mt-3 pt-3 border-t border-[var(--line)] text-[10px] text-[var(--muted)] leading-relaxed">
+                  Pick a subcategory to view its products.
+                </div>
+              </div>
+            </aside>
+          )}
+
+          {/* -------- RIGHT: PRODUCTS -------- */}
+          <div className="flex-1 min-w-0">
+            {awaitingSubcategory ? (
+              <div className="glass-panel max-w-lg mx-auto text-center py-16 px-8 rounded-[var(--radius-xl)]">
+                <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[var(--gold)]/15 border border-[var(--gold)]/40 flex items-center justify-center text-[var(--gold)] shadow-[var(--glow-gold)]">
+                  <ChevronDown size={28} />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Browse {currentCategoryObj?.name}
+                </h3>
+                <p className="text-sm text-[var(--muted)] leading-relaxed mb-1">
+                  {currentCategoryObj?.productCount} products across {currentCategoryObj?.subcategories.length} subcategories.
+                </p>
+                <p className="text-xs text-[var(--muted)] leading-relaxed">
+                  Choose a subcategory from the middle column to view its products, or pick "All {currentCategoryObj?.name}" to see everything.
+                </p>
+              </div>
+            ) : totalItems === 0 ? (
+              <div className="glass-panel max-w-xl mx-auto text-center py-16 px-8 rounded-[var(--radius-xl)]">
+                <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-[var(--gold)]/15 border border-[var(--gold)]/40 flex items-center justify-center text-[var(--gold)] shadow-[var(--glow-gold)]">
+                  <Search size={28} />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">No products match</h3>
+                <p className="text-sm text-[var(--muted)] leading-relaxed mb-6">
+                  Try a different keyword, or clear your filters to browse the full
+                  catalogue. You can also request a hard-to-find part via our sourcing
+                  desk.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <button
+                    type="button"
+                    onClick={clearAllFilters}
+                    className="button-secondary"
+                  >
+                    <span>Clear all filters</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('parts-sourcing')}
+                    className="button"
+                  >
+                    <span>Request Custom Sourcing</span>
+                    <ArrowRight size={15} />
+                  </button>
+                </div>
+              </div>
+            ) : viewMode === 'grid' ? (
+              /* -------- GRID VIEW (premium cards) -------- */
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {paginatedProducts.map((product) => {
               const inQuote = items.some(i => i.sku === product.sku);
               const itemQty = quantities[product.sku] || 1;
@@ -782,85 +887,13 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
             </div>
           </div>
                 )}
-              </div>
-
-              {/* -------- SIDE LADDER (subcategories) -------- */}
-              {ladderOpen && currentCategoryObj && (
-                <aside className="side-ladder w-full lg:w-72 shrink-0 lg:sticky lg:top-24">
-                  <div className="glass-panel rounded-[var(--radius-xl)] p-5 flex flex-col gap-1.5 border border-[var(--gold)]/30 shadow-[var(--glow-premium)]">
-                    <div className="flex items-center justify-between pb-3 mb-2 border-b border-[var(--line)]">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[var(--gold)]">
-                          {getCategoryIcon(currentCategoryObj.iconName)}
-                        </span>
-                        <h3 className="text-sm font-bold text-white">
-                          {currentCategoryObj.name}
-                        </h3>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => setLadderOpen(false)}
-                        className="p-1 text-[var(--muted)] hover:text-white cursor-pointer"
-                        aria-label="Close subcategories"
-                      >
-                        <X size={14} />
-                      </button>
-                    </div>
-
-                    <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[var(--muted)] px-1 pb-1">
-                      Subcategories
-                    </span>
-
-                    {/* "All" rung */}
-                    <button
-                      type="button"
-                      onClick={() => handleSelectSubcategory(currentCategoryObj.slug, 'all')}
-                      className={`ladder-rung w-full text-left px-3 py-2.5 rounded-[var(--radius-md)] text-xs font-bold flex items-center justify-between gap-2 transition-all cursor-pointer ${
-                        selectedSubcategory === 'all'
-                          ? 'bg-[var(--grad-premium)] text-white shadow-[var(--glow-premium)]'
-                          : 'text-[var(--silver)] hover:bg-[#161c22] hover:text-white'
-                      }`}
-                    >
-                      <span>All {currentCategoryObj.name}</span>
-                      <span className="text-[10px] font-mono opacity-70">
-                        {currentCategoryObj.productCount}
-                      </span>
-                    </button>
-
-                    {/* Subcategory rungs */}
-                    {currentCategoryObj.subcategories.map((sub) => {
-                      const active = selectedSubcategory === sub.slug;
-                      return (
-                        <button
-                          key={sub.slug}
-                          type="button"
-                          onClick={() => handleSelectSubcategory(currentCategoryObj.slug, sub.slug)}
-                          className={`ladder-rung w-full text-left px-3 py-2.5 rounded-[var(--radius-md)] text-xs font-semibold flex items-center justify-between gap-2 transition-all cursor-pointer ${
-                            active
-                              ? 'bg-[var(--blue)] text-white shadow-[var(--glow-sm)]'
-                              : 'text-[var(--silver)] hover:bg-[#161c22] hover:text-white'
-                          }`}
-                        >
-                          <span className="truncate">{sub.name}</span>
-                          <span className={`text-[10px] font-mono shrink-0 ${active ? 'opacity-80' : 'text-[var(--muted)]'}`}>
-                            {sub.count}
-                          </span>
-                        </button>
-                      );
-                    })}
-
-                    <div className="mt-3 pt-3 border-t border-[var(--line)] text-[10px] text-[var(--muted)] leading-relaxed">
-                      Pick a subcategory to narrow the catalogue.
-                    </div>
-                  </div>
-                </aside>
-              )}
-            </div>
+          </div>
+        </div>
 
         {/* ============================================================
             PAGINATION
             ============================================================ */}
-        {totalPages > 1 && (
+        {!awaitingSubcategory && totalItems > 0 && totalPages > 1 && (
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-[var(--muted)]">
               Showing{' '}
@@ -917,9 +950,6 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
               </button>
             </div>
           </div>
-        )}
-
-          </>
         )}
       </Section>
 

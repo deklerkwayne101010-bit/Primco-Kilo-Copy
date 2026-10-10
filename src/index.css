@@ -623,16 +623,18 @@
   box-shadow: var(--glow-premium);
 }
 
-/* C: catalogue side-ladder (subcategory panel) slide-in + rung rail */
-[data-variant='C'] .side-ladder {
-  animation: ladder-in 0.28s ease-out;
-}
-[data-variant='C'] .ladder-rung {
+/* C: catalogue drill-down rails (left main + middle sub) */
+[data-variant='C'] .main-rung,
+[data-variant='C'] .sub-rung {
   position: relative;
   border-left: 2px solid transparent;
 }
-[data-variant='C'] .ladder-rung:hover {
+[data-variant='C'] .main-rung:hover,
+[data-variant='C'] .sub-rung:hover {
   border-left-color: var(--gold);
+}
+[data-variant='C'] .sub-rail {
+  animation: ladder-in 0.28s ease-out;
 }
 
 @keyframes ladder-in {
