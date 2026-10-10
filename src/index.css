@@ -326,9 +326,9 @@
 
 /* ============================================================
    VERSION B — Alternative design theme
-   Activated when the root element carries data-variant="b"
+   Activated when the root element carries data-variant="B"
    ============================================================ */
-[data-variant='b'] {
+[data-variant='B'] {
   /* Accent: refined teal (alternative to the electric blue of Version A) */
   --blue: #14b8a6;
   --blue-dark: #0f766e;
@@ -353,39 +353,39 @@
 }
 
 /* Version B component-level tweaks */
-[data-variant='b'] .button {
+[data-variant='B'] .button {
   border-radius: 999px;
   letter-spacing: 0.01em;
 }
 
-[data-variant='b'] .button-secondary {
+[data-variant='B'] .button-secondary {
   border-radius: 999px;
 }
 
-[data-variant='b'] .eyebrow {
+[data-variant='B'] .eyebrow {
   letter-spacing: 0.22em;
 }
 
-[data-variant='b'] .eyebrow-line {
+[data-variant='B'] .eyebrow-line {
   width: 44px;
 }
 
-[data-variant='b'] .card-interactive {
+[data-variant='B'] .card-interactive {
   border-radius: var(--radius-xl);
 }
 
-[data-variant='b'] .card-interactive:hover {
+[data-variant='B'] .card-interactive:hover {
   transform: translateY(-6px);
 }
 
-[data-variant='b'] h1 {
+[data-variant='B'] h1 {
   letter-spacing: -0.045em;
 }
 
-[data-variant='b'] h2 {
+[data-variant='B'] h2 {
   letter-spacing: -0.04em;
 }
 
-[data-variant='b'] .status-dot {
+[data-variant='B'] .status-dot {
   box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.25);
 }
