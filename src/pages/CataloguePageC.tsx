@@ -7,6 +7,7 @@ import { PRODUCTS, RANGES, CATEGORIES, BRANDS, Product } from '../data/catalogue
 import {
   Search,
   X,
+  ChevronDown,
   LayoutGrid,
   List,
   ArrowRight,
@@ -60,6 +61,7 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [copiedSku, setCopiedSku] = useState<string | null>(null);
+  const [ladderOpen, setLadderOpen] = useState(false);
 
   // Sync when incoming props change
   useEffect(() => {
@@ -69,12 +71,14 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
   }, [initialRange, initialCategory, initialQuery]);
 
   const handleSelectCategory = (slug: string) => {
-    if (selectedCategory === slug) {
+    if (slug === 'all' || selectedCategory === slug) {
       setSelectedCategory('all');
       setSelectedSubcategory('all');
+      setLadderOpen(false);
     } else {
       setSelectedCategory(slug);
       setSelectedSubcategory('all');
+      setLadderOpen(true);
     }
     setCurrentPage(1);
   };
@@ -275,44 +279,32 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
         <div className="container py-3.5 flex flex-col gap-3">
           {/* Row 1: category pills + controls */}
           <div className="flex flex-col lg:flex-row lg:items-center gap-3">
-            {/* Category pills (horizontal scroll) */}
-            <div className="flex-1 flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0 scrollbar-none">
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedCategory('all');
-                  setSelectedSubcategory('all');
-                  setCurrentPage(1);
-                }}
-                className={`shrink-0 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                  selectedCategory === 'all'
-                    ? 'bg-[var(--grad-premium)] text-white shadow-[var(--glow-premium)]'
-                    : 'bg-[#111418] border border-[var(--line)] text-[var(--silver)] hover:border-[var(--gold)] hover:text-white'
-                }`}
-              >
-                All Products
-              </button>
-
-              {CATEGORIES.map((cat) => {
-                const active = selectedCategory === cat.slug;
-                return (
-                  <button
-                    key={cat.slug}
-                    type="button"
-                    onClick={() => handleSelectCategory(cat.slug)}
-                    className={`shrink-0 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 transition-all cursor-pointer ${
-                      active
-                        ? 'bg-[var(--grad-premium)] text-white shadow-[var(--glow-premium)]'
-                        : 'bg-[#111418] border border-[var(--line)] text-[var(--silver)] hover:border-[var(--gold)] hover:text-white'
-                    }`}
-                  >
-                    <span className={active ? 'text-white' : 'text-[var(--gold)]'}>
-                      {getCategoryIcon(cat.iconName)}
-                    </span>
-                    <span>{cat.name}</span>
-                  </button>
-                );
-              })}
+            {/* Big category dropdown (all main categories) */}
+            <div className="flex-1 min-w-0">
+              <label className="block text-[10px] font-extrabold uppercase tracking-[0.18em] text-[var(--gold)] mb-1.5">
+                Main Category
+              </label>
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--gold)] pointer-events-none">
+                  {currentCategoryObj ? getCategoryIcon(currentCategoryObj.iconName) : <Package size={18} />}
+                </span>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => handleSelectCategory(e.target.value)}
+                  className="w-full h-14 pl-12 pr-12 bg-[#111418] border border-[var(--line)] rounded-[var(--radius-lg)] text-sm font-bold text-white outline-none cursor-pointer focus:border-[var(--gold)] focus:shadow-[var(--glow-gold)] transition-all appearance-none"
+                  aria-label="Select main category"
+                >
+                  <option value="all">All Categories</option>
+                  {CATEGORIES.map((cat) => (
+                    <option key={cat.slug} value={cat.slug}>
+                      {cat.name} ({cat.productCount})
+                    </option>
+                  ))}
+                </select>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--gold)] pointer-events-none">
+                  <ChevronDown size={18} />
+                </span>
+              </div>
             </div>
 
             {/* Controls: view + sort */}
@@ -366,42 +358,7 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
             </div>
           </div>
 
-          {/* Row 2: subcategory pills (when a category is active) */}
-          {currentCategoryObj && (
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-              <span className="shrink-0 text-[11px] font-bold uppercase tracking-wider text-[var(--gold)] mr-1">
-                {currentCategoryObj.name}:
-              </span>
-              <button
-                type="button"
-                onClick={() => handleSelectSubcategory(currentCategoryObj.slug, 'all')}
-                className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] font-bold transition-all cursor-pointer ${
-                  selectedSubcategory === 'all'
-                    ? 'bg-[var(--blue)] text-white'
-                    : 'bg-[#111418] border border-[var(--line)] text-[var(--silver)] hover:border-[var(--gold)] hover:text-white'
-                }`}
-              >
-                All
-              </button>
-              {currentCategoryObj.subcategories.map((sub) => {
-                const active = selectedSubcategory === sub.slug;
-                return (
-                  <button
-                    key={sub.slug}
-                    type="button"
-                    onClick={() => handleSelectSubcategory(currentCategoryObj.slug, sub.slug)}
-                    className={`shrink-0 px-3 py-1.5 rounded-full text-[11px] font-bold transition-all cursor-pointer ${
-                      active
-                        ? 'bg-[var(--blue)] text-white'
-                        : 'bg-[#111418] border border-[var(--line)] text-[var(--silver)] hover:border-[var(--gold)] hover:text-white'
-                    }`}
-                  >
-                    {sub.name}
-                  </button>
-                );
-              })}
-            </div>
-          )}
+          {/* Subcategories now open in the side ladder */}
 
           {/* Row 3: brand + stock + per-page + result count */}
           <div className="flex flex-wrap items-center gap-2.5">
@@ -532,9 +489,13 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
               </button>
             </div>
           </div>
-        ) : viewMode === 'grid' ? (
-          /* -------- GRID VIEW (premium cards) -------- */
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        ) : (
+          <>
+            <div className="flex flex-col lg:flex-row gap-6 items-start">
+              <div className="flex-1 min-w-0">
+                {viewMode === 'grid' ? (
+                  /* -------- GRID VIEW (premium cards) -------- */
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {paginatedProducts.map((product) => {
               const inQuote = items.some(i => i.sku === product.sku);
               const itemQty = quantities[product.sku] || 1;
@@ -820,7 +781,81 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
               </table>
             </div>
           </div>
-        )}
+                )}
+              </div>
+
+              {/* -------- SIDE LADDER (subcategories) -------- */}
+              {ladderOpen && currentCategoryObj && (
+                <aside className="side-ladder w-full lg:w-72 shrink-0 lg:sticky lg:top-24">
+                  <div className="glass-panel rounded-[var(--radius-xl)] p-5 flex flex-col gap-1.5 border border-[var(--gold)]/30 shadow-[var(--glow-premium)]">
+                    <div className="flex items-center justify-between pb-3 mb-2 border-b border-[var(--line)]">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[var(--gold)]">
+                          {getCategoryIcon(currentCategoryObj.iconName)}
+                        </span>
+                        <h3 className="text-sm font-bold text-white">
+                          {currentCategoryObj.name}
+                        </h3>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setLadderOpen(false)}
+                        className="p-1 text-[var(--muted)] hover:text-white cursor-pointer"
+                        aria-label="Close subcategories"
+                      >
+                        <X size={14} />
+                      </button>
+                    </div>
+
+                    <span className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[var(--muted)] px-1 pb-1">
+                      Subcategories
+                    </span>
+
+                    {/* "All" rung */}
+                    <button
+                      type="button"
+                      onClick={() => handleSelectSubcategory(currentCategoryObj.slug, 'all')}
+                      className={`ladder-rung w-full text-left px-3 py-2.5 rounded-[var(--radius-md)] text-xs font-bold flex items-center justify-between gap-2 transition-all cursor-pointer ${
+                        selectedSubcategory === 'all'
+                          ? 'bg-[var(--grad-premium)] text-white shadow-[var(--glow-premium)]'
+                          : 'text-[var(--silver)] hover:bg-[#161c22] hover:text-white'
+                      }`}
+                    >
+                      <span>All {currentCategoryObj.name}</span>
+                      <span className="text-[10px] font-mono opacity-70">
+                        {currentCategoryObj.productCount}
+                      </span>
+                    </button>
+
+                    {/* Subcategory rungs */}
+                    {currentCategoryObj.subcategories.map((sub) => {
+                      const active = selectedSubcategory === sub.slug;
+                      return (
+                        <button
+                          key={sub.slug}
+                          type="button"
+                          onClick={() => handleSelectSubcategory(currentCategoryObj.slug, sub.slug)}
+                          className={`ladder-rung w-full text-left px-3 py-2.5 rounded-[var(--radius-md)] text-xs font-semibold flex items-center justify-between gap-2 transition-all cursor-pointer ${
+                            active
+                              ? 'bg-[var(--blue)] text-white shadow-[var(--glow-sm)]'
+                              : 'text-[var(--silver)] hover:bg-[#161c22] hover:text-white'
+                          }`}
+                        >
+                          <span className="truncate">{sub.name}</span>
+                          <span className={`text-[10px] font-mono shrink-0 ${active ? 'opacity-80' : 'text-[var(--muted)]'}`}>
+                            {sub.count}
+                          </span>
+                        </button>
+                      );
+                    })}
+
+                    <div className="mt-3 pt-3 border-t border-[var(--line)] text-[10px] text-[var(--muted)] leading-relaxed">
+                      Pick a subcategory to narrow the catalogue.
+                    </div>
+                  </div>
+                </aside>
+              )}
+            </div>
 
         {/* ============================================================
             PAGINATION
@@ -882,6 +917,9 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
               </button>
             </div>
           </div>
+        )}
+
+          </>
         )}
       </Section>
 

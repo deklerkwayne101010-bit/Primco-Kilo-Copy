@@ -622,3 +622,20 @@
 [data-variant='C'] .catalogue-card:hover {
   box-shadow: var(--glow-premium);
 }
+
+/* C: catalogue side-ladder (subcategory panel) slide-in + rung rail */
+[data-variant='C'] .side-ladder {
+  animation: ladder-in 0.28s ease-out;
+}
+[data-variant='C'] .ladder-rung {
+  position: relative;
+  border-left: 2px solid transparent;
+}
+[data-variant='C'] .ladder-rung:hover {
+  border-left-color: var(--gold);
+}
+
+@keyframes ladder-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
