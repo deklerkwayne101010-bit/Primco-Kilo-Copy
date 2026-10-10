@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
+import { PageHero } from '../components/PageHero';
 import { Building2, Truck, ShieldCheck, FileCheck2, MapPin, Users } from 'lucide-react';
 
 interface CompanyProfilePageProps {
@@ -32,20 +33,11 @@ export const CompanyProfilePage: React.FC<CompanyProfilePageProps> = ({ onNaviga
 
   return (
     <div className="flex flex-col">
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-12">
-        <div className="container">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            <span>ENTERPRISE OVERVIEW</span>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-2">
-            Primeco Supplies Company Profile
-          </h1>
-          <p className="text-sm text-[var(--muted)] max-w-xl">
-            Established to provide automotive body repair centres, insurance restoration shops, and transport fleets with seamless consumable procurement and rapid turnaround times.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="ENTERPRISE OVERVIEW"
+        title="Primeco Supplies Company Profile"
+        description="Established to provide automotive body repair centres, insurance restoration shops, and transport fleets with seamless consumable procurement and rapid turnaround times."
+      />
 
       <Section size="md" background="none" borderBlock>
         {/* Real Warehouse Facility Banner from primeco.co.za */}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
+import { PageHero } from '../components/PageHero';
 import { FormField, FieldGrid } from '../components/FormField';
 import { useQuote } from '../context/QuoteContext';
 import { Search, Send, CheckCircle2, ShieldCheck, Car, FileText, Camera, Clock } from 'lucide-react';
@@ -43,21 +44,11 @@ export const PartsSourcingPage: React.FC<PartsSourcingPageProps> = ({ initialQue
 
   return (
     <div className="flex flex-col">
-      {/* Header */}
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-12">
-        <div className="container">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            <span>SPECIALIST AUTOMOTIVE PROCUREMENT</span>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-2">
-            Can't find it? <span className="text-[var(--blue)]">We'll source it.</span>
-          </h1>
-          <p className="text-sm text-[var(--muted)] max-w-xl">
-            Hard-to-find structural clips, imported vehicle windscreens, discontinued model panels, or specialized refinish formulas — our direct distributor network tracks it down.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="SPECIALIST AUTOMOTIVE PROCUREMENT"
+        title={<>Can't find it? <span className="text-[var(--blue)]">We'll source it.</span></>}
+        description="Hard-to-find structural clips, imported vehicle windscreens, discontinued model panels, or specialized refinish formulas — our direct distributor network tracks it down."
+      />
 
       {/* 3-Step Process Cards */}
       <Section size="sm" background="wash" borderBlock>

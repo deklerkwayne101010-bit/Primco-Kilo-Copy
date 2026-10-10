@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
+import { PageHero } from '../components/PageHero';
 import { FormField, FieldGrid } from '../components/FormField';
 import { useQuote } from '../context/QuoteContext';
 import { ProductGraphic } from '../components/ProductGraphic';
@@ -93,21 +94,11 @@ export const QuotePage: React.FC<QuotePageProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col">
-      {/* Page Header */}
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-12">
-        <div className="container">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            <span>TRADE PRICING & DISPATCH</span>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-2">
-            Panel Shop Quote Builder
-          </h1>
-          <p className="text-sm text-[var(--muted)] max-w-xl">
-            Compile your workshop order, specify delivery requirements, and receive official trade credit terms or immediate EFT proforma invoicing from our Alberton desk.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="TRADE PRICING & DISPATCH"
+        title="Panel Shop Quote Builder"
+        description="Compile your workshop order, specify delivery requirements, and receive official trade credit terms or immediate EFT proforma invoicing from our Alberton desk."
+      />
 
       {/* Main Quote Content */}
       <Section size="sm" background="none">

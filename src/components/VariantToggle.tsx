@@ -13,7 +13,7 @@ export const VariantToggle: React.FC = () => {
       <span className="text-[9px] font-extrabold tracking-widest text-[var(--muted)] px-1.5 hidden sm:block">
         DESIGN
       </span>
-      {(['A', 'B'] as Variant[]).map((v) => (
+      {(['A', 'B', 'C'] as Variant[]).map((v) => (
         <button
           key={v}
           type="button"

@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
+import { PageHero } from '../components/PageHero';
 import { PRODUCTS, Product } from '../data/catalogue';
 import { useQuote } from '../context/QuoteContext';
 import { Upload, FileText, CheckCircle2, AlertTriangle, ArrowRight, Download, Plus } from 'lucide-react';
@@ -111,21 +112,11 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
 
   return (
     <div className="flex flex-col">
-      {/* Header */}
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-12">
-        <div className="container">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            <span>BATCH ORDER PROCUREMENT</span>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-2">
-            Quick CSV Order Import
-          </h1>
-          <p className="text-sm text-[var(--muted)] max-w-xl">
-            Upload your shop inventory replenishment file or paste your spreadsheet columns (SKU, Quantity) to rapidly assemble a multi-line quote in seconds.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="BATCH ORDER PROCUREMENT"
+        title="Quick CSV Order Import"
+        description="Upload your shop inventory replenishment file or paste your spreadsheet columns (SKU, Quantity) to rapidly assemble a multi-line quote in seconds."
+      />
 
       {/* Main Content */}
       <Section size="sm" background="none">

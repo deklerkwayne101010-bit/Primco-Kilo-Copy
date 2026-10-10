@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
+import { PageHero } from '../components/PageHero';
 import { TEAM_MEMBERS } from '../data/catalogue';
 import { ShieldCheck, Truck, Clock, Award, Phone, Mail, MessageSquare, ArrowRight, CheckCircle2 } from 'lucide-react';
 
@@ -13,23 +14,11 @@ interface AboutPageProps {
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenWhatsApp }) => {
   return (
     <div className="flex flex-col">
-      {/* Intro Header */}
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-14">
-        <div className="container">
-          <div className="max-w-3xl">
-            <div className="eyebrow">
-              <span className="eyebrow-line" />
-              <span>ABOUT PRIMECO</span>
-            </div>
-            <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-4">
-              Behind every repair, a dependable supply partner.
-            </h1>
-            <p className="text-base text-[var(--silver)] leading-relaxed">
-              Primeco Supplies (Pty) Ltd was established with a singular focus: eliminating the supply headaches that stall collision repair shops and commercial fleet workshops across Gauteng. From our Alberton hub, we deliver high-grade components with trade accountability.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="ABOUT PRIMECO"
+        title="Behind every repair, a dependable supply partner."
+        description="Primeco Supplies (Pty) Ltd was established with a singular focus: eliminating the supply headaches that stall collision repair shops and commercial fleet workshops across Gauteng. From our Alberton hub, we deliver high-grade components with trade accountability."
+      />
 
       {/* Section 1: Our Approach (Split layout - 2-col desktop, stacked mobile) */}
       <Section size="md" background="none" borderBlock>

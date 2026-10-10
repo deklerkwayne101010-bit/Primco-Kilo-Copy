@@ -3,6 +3,7 @@ import { PageId } from '../components/Header';
 import { useQuote } from '../context/QuoteContext';
 import { ProductGraphic } from '../components/ProductGraphic';
 import { PRODUCTS, RANGES, CATEGORIES, BRANDS, Product } from '../data/catalogue';
+import { PageHero } from '../components/PageHero';
 import {
   Search,
   Filter,
@@ -347,6 +348,13 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
 
   return (
     <div className="flex flex-col bg-[var(--ink)]">
+      {/* Variant-aware page hero (A/B/C) */}
+      <PageHero
+        eyebrow="ENGINEERING & WORKSHOP SUPPLY"
+        title="Product Catalogue"
+        description="Certified collision fasteners, abrasives, vehicle glass, mechanical parts, and refinish systems stocked at our Alberton distribution depot."
+      />
+
       {/* Top Banner (EIS Industrial Header) */}
       <section className="bg-gradient-to-b from-[#0a0d11] to-[var(--panel)] border-b border-[var(--line)] pt-8 pb-6">
         <div className="container">

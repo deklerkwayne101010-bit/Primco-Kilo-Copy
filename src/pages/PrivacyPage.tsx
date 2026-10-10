@@ -1,25 +1,17 @@
 import React from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
+import { PageHero } from '../components/PageHero';
 import { ShieldCheck } from 'lucide-react';
 
 export const PrivacyPage: React.FC<{ onNavigate: (page: PageId) => void }> = () => {
   return (
     <div className="flex flex-col">
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-12">
-        <div className="container">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            <span>LEGAL & REGULATORY</span>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-2">
-            POPIA Privacy Policy & Data Protection
-          </h1>
-          <p className="text-sm text-[var(--muted)] max-w-xl">
-            Protection of Personal Information Act (Act 4 of 2013) compliance and trade data governance for Primeco Supplies (Pty) Ltd.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="LEGAL & REGULATORY"
+        title="POPIA Privacy Policy & Data Protection"
+        description="Protection of Personal Information Act (Act 4 of 2013) compliance and trade data governance for Primeco Supplies (Pty) Ltd."
+      />
 
       <Section size="md" background="none">
         <div className="max-w-3xl mx-auto bg-[#0b0e12] border border-[var(--line)] rounded-[var(--radius-xl)] p-8 lg:p-12 flex flex-col gap-8 text-xs sm:text-sm text-[var(--silver)] leading-relaxed">

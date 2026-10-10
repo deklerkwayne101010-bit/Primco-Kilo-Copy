@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
+import { PageHero } from '../components/PageHero';
 import { FormField, FieldGrid } from '../components/FormField';
 import { useQuote } from '../context/QuoteContext';
 import { Phone, Mail, MessageSquare, MapPin, Clock, Send, ArrowRight, ShieldCheck } from 'lucide-react';
@@ -34,21 +35,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
 
   return (
     <div className="flex flex-col">
-      {/* Header */}
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-12">
-        <div className="container">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            <span>DIRECT PANEL SHOP CONTACT</span>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-2">
-            Get in touch with Primeco Supplies
-          </h1>
-          <p className="text-sm text-[var(--muted)] max-w-xl">
-            Whether you need urgent windscreen delivery, custom refinish formulations, or trade credit terms, our team is accessible by phone, WhatsApp, or email.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="DIRECT PANEL SHOP CONTACT"
+        title="Get in touch with Primeco Supplies"
+        description="Whether you need urgent windscreen delivery, custom refinish formulations, or trade credit terms, our team is accessible by phone, WhatsApp, or email."
+      />
 
       {/* 3-Column Contact Cards */}
       <Section size="sm" background="none" borderBlock>

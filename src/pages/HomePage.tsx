@@ -6,6 +6,7 @@ import { ProductCard } from '../components/ProductCard';
 import { RANGES, CATEGORIES, PRODUCTS, TESTIMONIALS, Product } from '../data/catalogue';
 import { useVariant } from '../context/VariantContext';
 import { HomePageAlt } from './HomePageAlt';
+import { HomePageC } from './HomePageC';
 import { Search, ArrowRight, ShieldCheck, Truck, Clock, Star, Wrench, Layers, Paintbrush, Disc, Sparkles } from 'lucide-react';
 
 interface HomePageProps {
@@ -21,6 +22,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
   // Version B: catalogue-first homepage
   if (variant === 'B') {
     return <HomePageAlt onNavigate={onNavigate} onSelectProduct={onSelectProduct} />;
+  }
+
+  // Version C: premium catalogue-first homepage
+  if (variant === 'C') {
+    return <HomePageC onNavigate={onNavigate} onSelectProduct={onSelectProduct} />;
   }
 
   const featuredProducts = PRODUCTS.filter(p => p.featured).slice(0, 8);

@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
+import { PageHero } from '../components/PageHero';
 import { BRANDS } from '../data/catalogue';
 import { ArrowRight, ShieldCheck, Award } from 'lucide-react';
 
@@ -12,20 +13,11 @@ interface BrandsPageProps {
 export const BrandsPage: React.FC<BrandsPageProps> = ({ onNavigate }) => {
   return (
     <div className="flex flex-col">
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-12">
-        <div className="container">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            <span>OEM PARTNER MANUFACTURERS</span>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-2">
-            Authorized Brands & Manufacturers
-          </h1>
-          <p className="text-sm text-[var(--muted)] max-w-xl">
-            Primeco distributes exclusively authenticated, genuine brands compliant with South African insurance guarantees and OEM collision repair standards.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="OEM PARTNER MANUFACTURERS"
+        title="Authorized Brands & Manufacturers"
+        description="Primeco distributes exclusively authenticated, genuine brands compliant with South African insurance guarantees and OEM collision repair standards."
+      />
 
       <Section size="md" background="none">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

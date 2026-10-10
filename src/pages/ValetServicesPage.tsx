@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../components/Header';
 import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
+import { PageHero } from '../components/PageHero';
 import { Sparkles, Shield, Droplets, SprayCan, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface ValetServicesPageProps {
@@ -32,20 +33,11 @@ export const ValetServicesPage: React.FC<ValetServicesPageProps> = ({ onNavigate
 
   return (
     <div className="flex flex-col">
-      <section className="bg-[var(--grad-surface)] border-b border-[var(--line)] py-12">
-        <div className="container">
-          <div className="eyebrow">
-            <span className="eyebrow-line" />
-            <span>FINAL PRE-DELIVERY DETAILING</span>
-          </div>
-          <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-2">
-            Panel Shop Valet & Detailing Supplies
-          </h1>
-          <p className="text-sm text-[var(--muted)] max-w-xl">
-            Ensure your repaired vehicles leave your workshop in immaculate showroom condition with our specialized bodyshop-safe valet chemicals.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="FINAL PRE-DELIVERY DETAILING"
+        title="Panel Shop Valet & Detailing Supplies"
+        description="Ensure your repaired vehicles leave your workshop in immaculate showroom condition with our specialized bodyshop-safe valet chemicals."
+      />
 
       <Section size="md" background="none" borderBlock>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

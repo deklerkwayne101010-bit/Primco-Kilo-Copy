@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-export type Variant = 'A' | 'B';
+export type Variant = 'A' | 'B' | 'C';
 
 interface VariantContextType {
   variant: Variant;
@@ -15,7 +15,7 @@ export const VariantProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [variant, setVariantState] = useState<Variant>(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      return stored === 'B' ? 'B' : 'A';
+      return stored === 'B' || stored === 'C' ? (stored as Variant) : 'A';
     } catch {
       return 'A';
     }
