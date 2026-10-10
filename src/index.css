@@ -507,3 +507,118 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
+
+/* ============================================================
+   VERSION C — Catalogue page: premium feel + usability
+   Scoped to .catalogue-page so Versions A & B are untouched.
+   ============================================================ */
+
+/* Glass sidebar facet panels */
+[data-variant='C'] .catalogue-page aside > div {
+  background: rgba(13, 17, 22, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Gold accent on sidebar icon highlights */
+[data-variant='C'] .catalogue-page aside svg.text-\[var\(--blue\)\] {
+  color: var(--gold);
+}
+
+/* Premium select controls (sort / items-per-page) */
+[data-variant='C'] .catalogue-page select {
+  background: rgba(17, 20, 24, 0.9);
+  border-color: rgba(212, 175, 55, 0.35);
+  transition: border-color .2s, box-shadow .2s;
+}
+[data-variant='C'] .catalogue-page select:focus {
+  border-color: var(--gold);
+  box-shadow: var(--glow-gold);
+  outline: none;
+}
+
+/* Sticky premium toolbar (md+): search / view / sort stay visible
+   while scrolling the product list — the core usability upgrade. */
+@media (min-width: 768px) {
+  [data-variant='C'] .catalogue-toolbar {
+    position: sticky;
+    top: 96px;
+    z-index: 30;
+    background: rgba(11, 14, 18, 0.85);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-color: rgba(212, 175, 55, 0.35);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Premium search input with gold focus glow */
+[data-variant='C'] .catalogue-search {
+  background: rgba(17, 20, 24, 0.9);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+[data-variant='C'] .catalogue-search:focus {
+  border-color: var(--gold);
+  box-shadow: var(--glow-gold);
+}
+[data-variant='C'] .catalogue-search::placeholder {
+  color: rgba(148, 163, 184, 0.55);
+}
+
+/* Gradient active state on the view-mode toggle */
+[data-variant='C'] .catalogue-viewtoggle button.bg-\[var\(--blue\)\] {
+  background: var(--grad-premium);
+  background-size: 180% 180%;
+  animation: premium-shift 6s ease infinite;
+  box-shadow: var(--glow-premium);
+}
+
+/* Premium industrial table */
+[data-variant='C'] .catalogue-table {
+  background: rgba(13, 17, 22, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: rgba(212, 175, 55, 0.25);
+}
+[data-variant='C'] .catalogue-table thead tr {
+  background: linear-gradient(90deg, rgba(17,152,232,.20), rgba(139,92,246,.14), rgba(212,175,55,.10));
+}
+[data-variant='C'] .catalogue-table tbody tr {
+  transition: background .2s, box-shadow .2s;
+}
+[data-variant='C'] .catalogue-table tbody tr:hover {
+  background: rgba(17, 152, 232, 0.07);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+/* Premium grid cards: animated gradient border + glow on hover */
+[data-variant='C'] .catalogue-card {
+  position: relative;
+  background: rgba(13, 17, 22, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+[data-variant='C'] .catalogue-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: var(--grad-premium);
+  background-size: 220% 220%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: premium-shift 6s linear infinite;
+  opacity: 0.35;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+[data-variant='C'] .catalogue-card:hover::before {
+  opacity: 1;
+}
+[data-variant='C'] .catalogue-card:hover {
+  box-shadow: var(--glow-premium);
+}

@@ -347,7 +347,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
   );
 
   return (
-    <div className="flex flex-col bg-[var(--ink)]">
+    <div className="catalogue-page flex flex-col bg-[var(--ink)]">
       {/* Variant-aware page hero (A/B/C) */}
       <PageHero
         eyebrow="ENGINEERING & WORKSHOP SUPPLY"
@@ -591,7 +591,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
           <div className="lg:col-span-9 flex flex-col gap-4">
             
             {/* EIS Industrial Control Toolbar */}
-            <div className="bg-[#0b0e12] border border-[var(--line)] rounded-[var(--radius-lg)] p-4 flex flex-col gap-3 shadow-sm">
+            <div className="catalogue-toolbar bg-[#0b0e12] border border-[var(--line)] rounded-[var(--radius-lg)] p-4 flex flex-col gap-3 shadow-sm">
               <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
                 
                 {/* Search Input with Clear Button */}
@@ -605,7 +605,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                       setCurrentPage(1);
                     }}
                     placeholder="Search by SKU (e.g. PRM-FST), name, category, or brand..."
-                    className="w-full bg-[#111418] border border-[var(--line)] rounded-[var(--radius-md)] pl-10 pr-9 py-2 text-xs text-white placeholder:text-[var(--muted)] focus:border-[var(--blue)] focus:shadow-[var(--glow-sm)] outline-none transition-all"
+                    className="catalogue-search w-full bg-[#111418] border border-[var(--line)] rounded-[var(--radius-md)] pl-10 pr-9 py-2 text-xs text-white placeholder:text-[var(--muted)] focus:border-[var(--blue)] focus:shadow-[var(--glow-sm)] outline-none transition-all"
                   />
                   {search && (
                     <button
@@ -636,7 +636,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                 <div className="flex items-center gap-3 justify-between md:justify-end">
                   
                   {/* View Mode Toggle: Table (List) vs Grid */}
-                  <div className="flex items-center bg-[#111418] border border-[var(--line)] rounded-[var(--radius-sm)] p-0.5">
+                  <div className="catalogue-viewtoggle flex items-center bg-[#111418] border border-[var(--line)] rounded-[var(--radius-sm)] p-0.5">
                     <button
                       type="button"
                       onClick={() => setViewMode('table')}
@@ -807,7 +807,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
             {/* Fits 100% within the main page without side scrolling     */}
             {/* ======================================================== */}
             {viewMode === 'table' && paginatedProducts.length > 0 && (
-              <div className="bg-[#0b0e12] border border-[var(--line)] rounded-[var(--radius-lg)] shadow-sm w-full overflow-hidden">
+              <div className="catalogue-table bg-[#0b0e12] border border-[var(--line)] rounded-[var(--radius-lg)] shadow-sm w-full overflow-hidden">
                 {/* Desktop & Tablet Table (sm:block) - Zero horizontal scroll */}
                 <div className="hidden sm:block w-full">
                   <table className="w-full text-left border-collapse text-xs table-auto">
@@ -1078,7 +1078,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                   return (
                     <article
                       key={product.sku}
-                      className="group bg-[var(--grad-surface)] border border-[var(--line)] rounded-[var(--radius-lg)] overflow-hidden flex flex-col justify-between transition-all duration-[var(--dur)] hover:-translate-y-1 hover:border-[var(--blue)] hover:shadow-[var(--glow-md)]"
+                      className="catalogue-card group bg-[var(--grad-surface)] border border-[var(--line)] rounded-[var(--radius-lg)] overflow-hidden flex flex-col justify-between transition-all duration-[var(--dur)] hover:-translate-y-1 hover:border-[var(--blue)] hover:shadow-[var(--glow-md)]"
                     >
                       {/* Card Image Area */}
                       <div
