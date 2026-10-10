@@ -20,6 +20,7 @@ import { Product } from './data/catalogue';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { CataloguePage } from './pages/CataloguePage';
+import { CataloguePageC } from './pages/CataloguePageC';
 import { QuickOrderPage } from './pages/QuickOrderPage';
 import { PartsSourcingPage } from './pages/PartsSourcingPage';
 import { BrandsPage } from './pages/BrandsPage';
@@ -81,13 +82,23 @@ function AppContent() {
         )}
 
         {activePage === 'catalogue' && (
-          <CataloguePage
-            initialRange={pageParams.range || 'all'}
-            initialCategory={pageParams.category || 'all'}
-            initialQuery={pageParams.query || ''}
-            onNavigate={handleNavigate}
-            onSelectProduct={setSelectedProduct}
-          />
+          variant === 'C' ? (
+            <CataloguePageC
+              initialRange={pageParams.range || 'all'}
+              initialCategory={pageParams.category || 'all'}
+              initialQuery={pageParams.query || ''}
+              onNavigate={handleNavigate}
+              onSelectProduct={setSelectedProduct}
+            />
+          ) : (
+            <CataloguePage
+              initialRange={pageParams.range || 'all'}
+              initialCategory={pageParams.category || 'all'}
+              initialQuery={pageParams.query || ''}
+              onNavigate={handleNavigate}
+              onSelectProduct={setSelectedProduct}
+            />
+          )
         )}
 
         {activePage === 'quick-order' && (
