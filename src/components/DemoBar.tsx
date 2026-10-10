@@ -10,10 +10,10 @@ export const DemoBar: React.FC<DemoBarProps> = ({ onGoToQuickOrder }) => {
   const { hasDemoItems } = useQuote();
 
   return (
-    <div className="bg-[#075eaf]/20 border-b border-[#1198e8]/30 py-2 px-4 text-xs text-[#d8dde3]">
+    <div className="bg-[var(--blue-dark)]/20 border-b border-[var(--blue)]/30 py-2 px-4 text-xs text-[#d8dde3]">
       <div className="container flex flex-col sm:flex-row items-center justify-between gap-2">
         <div className="flex items-center gap-2 text-center sm:text-left">
-          <AlertCircle size={15} className="text-[#1198e8] shrink-0" />
+          <AlertCircle size={15} className="text-[var(--blue)] shrink-0" />
           <span>
             <strong className="text-white font-bold">TRADE ESTIMATION SYSTEM:</strong> Panel shops in Gauteng enjoy same-day delivery on in-stock catalogue items.
             {hasDemoItems && (
@@ -28,7 +28,7 @@ export const DemoBar: React.FC<DemoBarProps> = ({ onGoToQuickOrder }) => {
           <button
             type="button"
             onClick={onGoToQuickOrder}
-            className="flex items-center gap-1 text-[#1198e8] hover:text-white font-bold transition-colors cursor-pointer shrink-0"
+            className="flex items-center gap-1 text-[var(--blue)] hover:text-white font-bold transition-colors cursor-pointer shrink-0"
           >
             <span>Bulk CSV Order Tool</span>
             <ArrowRight size={13} />

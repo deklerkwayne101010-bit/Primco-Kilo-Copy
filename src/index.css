@@ -320,6 +320,72 @@
   background: #2a3038;
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--blue-dark);
+ ::-webkit-scrollbar-thumb:hover {
+   background: var(--blue-dark);
+ }
+
+/* ============================================================
+   VERSION B — Alternative design theme
+   Activated when the root element carries data-variant="b"
+   ============================================================ */
+[data-variant='b'] {
+  /* Accent: refined teal (alternative to the electric blue of Version A) */
+  --blue: #14b8a6;
+  --blue-dark: #0f766e;
+
+  /* Brand gradients */
+  --grad-brand: linear-gradient(120deg, var(--blue-dark), var(--blue));
+  --grad-brand-soft: linear-gradient(135deg, rgba(15, 118, 110, 0.18), rgba(20, 184, 166, 0.07));
+  --grad-brand-wash: linear-gradient(180deg, rgba(20, 184, 166, 0.08), transparent 60%);
+  --grad-hover: linear-gradient(120deg, var(--blue), #2dd4bf);
+  --grad-active: linear-gradient(120deg, #115e59, var(--blue-dark));
+
+  /* Glows */
+  --glow-sm: 0 0 0 1px rgba(20, 184, 166, 0.85), 0 4px 16px rgba(20, 184, 166, 0.18);
+  --glow-md: 0 0 0 1px rgba(20, 184, 166, 0.85), 0 8px 32px rgba(20, 184, 166, 0.22);
+  --glow-lg: 0 0 0 1px rgba(20, 184, 166, 0.85), 0 18px 48px rgba(20, 184, 166, 0.3);
+
+  /* Softer, rounder geometry */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+}
+
+/* Version B component-level tweaks */
+[data-variant='b'] .button {
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+}
+
+[data-variant='b'] .button-secondary {
+  border-radius: 999px;
+}
+
+[data-variant='b'] .eyebrow {
+  letter-spacing: 0.22em;
+}
+
+[data-variant='b'] .eyebrow-line {
+  width: 44px;
+}
+
+[data-variant='b'] .card-interactive {
+  border-radius: var(--radius-xl);
+}
+
+[data-variant='b'] .card-interactive:hover {
+  transform: translateY(-6px);
+}
+
+[data-variant='b'] h1 {
+  letter-spacing: -0.045em;
+}
+
+[data-variant='b'] h2 {
+  letter-spacing: -0.04em;
+}
+
+[data-variant='b'] .status-dot {
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.25);
 }

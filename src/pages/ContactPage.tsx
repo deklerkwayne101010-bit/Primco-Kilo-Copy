@@ -282,7 +282,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#075eaf]/20 to-transparent border border-[var(--blue)]/30 rounded-[var(--radius-xl)] p-6">
+            <div className="bg-gradient-to-br from-[var(--blue-dark)]/20 to-transparent border border-[var(--blue)]/30 rounded-[var(--radius-xl)] p-6">
               <h4 className="text-sm font-bold text-white mb-2">Ready to order immediately?</h4>
               <p className="text-xs text-[var(--muted)] mb-4">
                 Jump straight into our interactive quote builder or upload your inventory spreadsheet.

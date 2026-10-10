@@ -561,7 +561,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
             </div>
 
             {/* Alberton Depot Logistics Support Widget */}
-            <div className="bg-gradient-to-br from-[#075eaf]/20 to-[#111418] border border-[var(--blue)]/30 rounded-[var(--radius-lg)] p-4 text-xs">
+            <div className="bg-gradient-to-br from-[var(--blue-dark)]/20 to-[#111418] border border-[var(--blue)]/30 rounded-[var(--radius-lg)] p-4 text-xs">
               <p className="font-bold text-white mb-1">Direct Sourcing Help?</p>
               <p className="text-[var(--muted)] text-[11px] leading-relaxed mb-3">
                 Cannot find a specific OEM part number or high-build formulation? Dean Strydom sources custom requirements daily.

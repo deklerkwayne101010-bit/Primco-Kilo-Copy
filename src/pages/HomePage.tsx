@@ -4,6 +4,8 @@ import { Section } from '../components/Section';
 import { SectionHead } from '../components/SectionHead';
 import { ProductCard } from '../components/ProductCard';
 import { RANGES, CATEGORIES, PRODUCTS, TESTIMONIALS, Product } from '../data/catalogue';
+import { useVariant } from '../context/VariantContext';
+import { HomePageAlt } from './HomePageAlt';
 import { Search, ArrowRight, ShieldCheck, Truck, Clock, Star, Wrench, Layers, Paintbrush, Disc, Sparkles } from 'lucide-react';
 
 interface HomePageProps {
@@ -13,6 +15,13 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct }) => {
   const [searchQuery, setSearchQuery] = useState('');
+
+  const { variant } = useVariant();
+
+  // Version B: catalogue-first homepage
+  if (variant === 'B') {
+    return <HomePageAlt onNavigate={onNavigate} onSelectProduct={onSelectProduct} />;
+  }
 
   const featuredProducts = PRODUCTS.filter(p => p.featured).slice(0, 8);
 
@@ -60,7 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
         />
 
         {/* Blueprint geometric automotive line grid */}
-        <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(#1198e8_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(var(--blue)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
         {/* Hero Content container */}
         <div className="container relative z-10 py-12">
@@ -414,7 +423,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
 
       {/* Bottom CTA Banner */}
       <Section size="sm" background="none">
-        <div className="bg-gradient-to-r from-[#075eaf]/40 via-[#111418] to-[#075eaf]/20 border border-[var(--blue)]/40 rounded-[var(--radius-xl)] p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-[var(--glow-sm)]">
+        <div className="bg-gradient-to-r from-[var(--blue-dark)]/40 via-[#111418] to-[var(--blue-dark)]/20 border border-[var(--blue)]/40 rounded-[var(--radius-xl)] p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-[var(--glow-sm)]">
           <div className="max-w-xl">
             <span className="eyebrow">
               <span className="eyebrow-line" />

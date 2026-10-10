@@ -77,7 +77,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             <div className="md:col-span-7 flex flex-col gap-4">
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--blue)] bg-[#075eaf]/20 border border-[var(--blue)]/40 px-2.5 py-0.5 rounded">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[var(--blue)] bg-[var(--blue-dark)]/20 border border-[var(--blue)]/40 px-2.5 py-0.5 rounded">
                     {product.subcategoryName || product.categoryName}
                   </span>
                   <span className="text-xs font-mono text-[var(--muted)]">

@@ -5,11 +5,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { QuoteProvider, useQuote } from './context/QuoteContext';
+import { VariantProvider, useVariant } from './context/VariantContext';
 import { TopBar } from './components/TopBar';
 import { Header, PageId } from './components/Header';
 import { DemoBar } from './components/DemoBar';
 import { Footer } from './components/Footer';
 import { WhatsAppFab } from './components/WhatsAppFab';
+import { VariantToggle } from './components/VariantToggle';
 import { Toast } from './components/Toast';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { Product } from './data/catalogue';
@@ -32,6 +34,7 @@ function AppContent() {
   const [pageParams, setPageParams] = useState<any>({});
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [whatsAppModalOpen, setWhatsAppModalOpen] = useState(false);
+  const { variant } = useVariant();
 
   // Scroll to top on page navigation
   useEffect(() => {
@@ -48,7 +51,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--ink)] text-[var(--silver)] font-sans antialiased selection:bg-[var(--blue)] selection:text-white relative">
+    <div data-variant={variant} className="min-h-screen flex flex-col bg-[var(--ink)] text-[var(--silver)] font-sans antialiased selection:bg-[var(--blue)] selection:text-white relative">
       {/* 1. Top Bar (37px) - Black, sticky contact info */}
       <TopBar onOpenWhatsApp={handleOpenWhatsApp} />
 
@@ -147,6 +150,9 @@ function AppContent() {
       {/* 6. Fixed WhatsApp FAB (bottom-right 24px, 64px circle, #25d366) */}
       <WhatsAppFab />
 
+      {/* 6b. Design A/B version toggle (bottom-left) */}
+      <VariantToggle />
+
       {/* 7. Toast (bottom-center, brand gradient) */}
       <Toast />
 
@@ -214,9 +220,11 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 export default function App() {
   return (
     <ErrorBoundary>
-      <QuoteProvider>
-        <AppContent />
-      </QuoteProvider>
+      <VariantProvider>
+        <QuoteProvider>
+          <AppContent />
+        </QuoteProvider>
+      </VariantProvider>
     </ErrorBoundary>
   );
 }
