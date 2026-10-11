@@ -184,7 +184,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Enter part SKU (e.g. PRM-BRK-019), windscreen code, or item..."
+                  placeholder="Enter part SKU (e.g. ABS198-P180), windscreen code, or item..."
                   className="w-full h-[59px] pl-12 pr-4 bg-[#0d1015] border border-[var(--line)] rounded-[var(--radius-md)] text-sm text-white placeholder:text-[var(--muted)] focus:border-[var(--blue)] focus:outline-none focus:shadow-[var(--glow-sm)] transition-all"
                 />
               </div>

@@ -84,7 +84,7 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
   };
 
   const handleSampleDownload = () => {
-    const sample = `SKU,Quantity\nPRM-BRK-019,4\nPRM-GLS-882,2\nPRM-PNT-104,5\nPRM-SND-400,10\nPRM-TOL-320,1\nPRM-FST-890,6`;
+    const sample = `SKU,Quantity\nABS198-P180,4\n2552-18,2\n2100-1800,5\nAST128N,1\n0371,6`;
     const blob = new Blob([sample], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -95,7 +95,7 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
   };
 
   const handleLoadSampleData = () => {
-    const sample = `PRM-BRK-019,4\nPRM-GLS-882,2\nPRM-PNT-104,5\nPRM-SND-400,10\nPRM-FST-890,8`;
+    const sample = `ABS198-P180,4\n2552-18,2\n2100-1800,5\nAST128N,1\n0371,8`;
     setCsvText(sample);
     parseCSV(sample);
   };
@@ -141,7 +141,7 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
                 Drag and drop your .CSV order file here
               </h3>
               <p className="text-xs text-[var(--muted)] max-w-md">
-                Format required: 2 columns with <strong>SKU</strong> and <strong>Quantity</strong> (e.g. PRM-BRK-019, 4)
+                Format required: 2 columns with <strong>SKU</strong> and <strong>Quantity</strong> (e.g. ABS198-P180, 4)
               </p>
             </div>
 
@@ -198,7 +198,7 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
                 parseCSV(e.target.value);
               }}
               rows={4}
-              placeholder="PRM-BRK-019, 5&#10;PRM-PNT-104, 2&#10;PRM-SND-400, 10"
+              placeholder="ABS198-P180, 5&#10;2100-1800, 2&#10;2552-18, 10"
               className="w-full bg-[#111418] border border-[var(--line)] rounded p-3 text-xs font-mono text-white placeholder:text-[var(--muted)] focus:border-[var(--blue)] outline-none"
             />
           </div>

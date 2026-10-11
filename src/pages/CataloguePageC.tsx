@@ -252,7 +252,7 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
                       setSearch(e.target.value);
                       setCurrentPage(1);
                     }}
-                    placeholder="Search by SKU (e.g. PRM-FST), name, category, or brand…"
+                    placeholder="Search by SKU (e.g. ABS198-P180), name, category, or brand…"
                     className="catalogue-search w-full h-[56px] pl-13 pr-12 bg-transparent border border-transparent focus:border-[var(--gold)] rounded-[var(--radius-lg)] text-sm text-white placeholder:text-[var(--muted)] focus:outline-none focus:shadow-[var(--glow-gold)] transition-all"
                   />
                   {search && (

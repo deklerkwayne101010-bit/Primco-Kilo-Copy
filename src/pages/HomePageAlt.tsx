@@ -88,7 +88,7 @@ export const HomePageAlt: React.FC<HomePageAltProps> = ({
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search by SKU (e.g. PRM-BRK-019), part name, brand, or category…"
+                   placeholder="Search by SKU (e.g. ABS198-P180), part name, brand, or category…"
                   className="w-full h-[64px] pl-13 pr-32 bg-[#0d1015] border border-[var(--line)] rounded-[var(--radius-lg)] text-sm text-white placeholder:text-[var(--muted)] focus:border-[var(--blue)] focus:outline-none focus:shadow-[var(--glow-md)] transition-all"
                 />
                 <button

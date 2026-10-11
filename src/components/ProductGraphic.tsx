@@ -123,7 +123,7 @@ export const ProductGraphic: React.FC<ProductGraphicProps> = ({ sku, category, n
   }
 
   // 3. Paint Solutions & Refinishing (2K High Solid Clearcoat & Spray Gun)
-  if (cat.includes('paint') || code.includes('PNT') || code.includes('CLR') || code.includes('MSK')) {
+  if (cat.includes('paint') || cat.includes('mask') || cat.includes('polish') || cat.includes('spray') || code.includes('PNT') || code.includes('CLR') || code.includes('MSK')) {
     return (
       <div className={`${baseBg} ${className}`}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(17,152,232,0.22),transparent_70%)] pointer-events-none" />
@@ -170,7 +170,7 @@ export const ProductGraphic: React.FC<ProductGraphicProps> = ({ sku, category, n
   }
 
   // 4. Abrasives & Sanding Systems (Multi-Hole Mesh Ceramic Disc)
-  if (cat.includes('abrasive') || code.includes('SND') || code.includes('CUT')) {
+  if (cat.includes('abrasive') || cat.includes('sanding') || code.includes('SND') || code.includes('CUT')) {
     return (
       <div className={`${baseBg} ${className}`}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(17,152,232,0.2),transparent_70%)] pointer-events-none" />
@@ -218,7 +218,7 @@ export const ProductGraphic: React.FC<ProductGraphicProps> = ({ sku, category, n
   }
 
   // 5. Fasteners & Structural Rivets (Aerospace Grade Monobolt Fastener)
-  if (cat.includes('fastener') || code.includes('FST') || code.includes('BLT') || code.includes('CLP') || code.includes('RVT')) {
+  if (cat.includes('fastener') || cat.includes('rivet') || cat.includes('clip') || cat.includes('screw') || code.includes('FST') || code.includes('BLT') || code.includes('CLP') || code.includes('RVT')) {
     return (
       <div className={`${baseBg} ${className}`}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(17,152,232,0.2),transparent_70%)] pointer-events-none" />
@@ -258,7 +258,7 @@ export const ProductGraphic: React.FC<ProductGraphicProps> = ({ sku, category, n
   }
 
   // 6. Chemicals, Adhesives & Sealants (Polyurethane Cartridge & Precision Nozzle)
-  if (cat.includes('chemical') || cat.includes('adhesive') || code.includes('ADH') || code.includes('CHM')) {
+  if (cat.includes('chemical') || cat.includes('adhesive') || cat.includes('sealant') || cat.includes('clean') || code.includes('ADH') || code.includes('CHM')) {
     return (
       <div className={`${baseBg} ${className}`}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(17,152,232,0.22),transparent_70%)] pointer-events-none" />
