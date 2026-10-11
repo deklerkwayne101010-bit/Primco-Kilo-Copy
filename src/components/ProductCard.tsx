@@ -60,10 +60,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
           >
             {product.name}
           </h3>
-
-          <p className="text-xs text-[var(--muted)] mt-1.5">
-            Unit: <span className="text-[var(--silver)] font-medium">{product.unit}</span>
-          </p>
         </div>
 
         {/* Add to Quote Button */}

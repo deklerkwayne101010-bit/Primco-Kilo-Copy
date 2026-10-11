@@ -90,7 +90,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 </h1>
 
                 <p className="text-xs text-[var(--muted)] mt-1">
-                  Brand: <strong className="text-[var(--silver)] font-bold">{product.brand}</strong> · Packaging: <strong className="text-[var(--silver)] font-bold">{product.unit}</strong>
+                  Brand: <strong className="text-[var(--silver)] font-bold">{product.brand}</strong>
                 </p>
               </div>
 
@@ -171,7 +171,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   >
                     <p className="text-[10px] text-[var(--muted)] font-mono">{rel.sku}</p>
                     <p className="text-xs font-bold text-white line-clamp-2">{rel.name}</p>
-                    <p className="text-[11px] text-[var(--blue)]">{rel.unit}</p>
                   </div>
                 ))}
               </div>

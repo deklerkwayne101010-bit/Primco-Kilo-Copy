@@ -709,9 +709,6 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
                           />
                           {product.inStock ? 'In Stock' : 'On Request'}
                         </span>
-                        <span className="text-[11px] text-[var(--muted)]">
-                          {product.unit}
-                        </span>
                       </div>
 
                       <div className="flex items-center gap-2">

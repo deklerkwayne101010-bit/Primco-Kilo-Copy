@@ -233,7 +233,6 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
                       <th className="py-2.5 px-3">Status</th>
                       <th className="py-2.5 px-3">SKU</th>
                       <th className="py-2.5 px-3">Item Name</th>
-                      <th className="py-2.5 px-3">Unit Packaging</th>
                       <th className="py-2.5 px-3 text-right">Quantity</th>
                     </tr>
                   </thead>
@@ -256,9 +255,6 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
                         </td>
                         <td className="py-2.5 px-3 text-[var(--silver)] font-medium">
                           {item.product?.name || item.error || 'Custom Part Entry'}
-                        </td>
-                        <td className="py-2.5 px-3 text-[var(--muted)]">
-                          {item.product?.unit || 'Custom Order'}
                         </td>
                         <td className="py-2.5 px-3 text-right font-bold text-white font-mono">
                           {item.quantity}

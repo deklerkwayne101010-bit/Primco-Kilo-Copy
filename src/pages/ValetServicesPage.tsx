@@ -56,8 +56,7 @@ export const ValetServicesPage: React.FC<ValetServicesPageProps> = ({ onNavigate
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[var(--line)] flex items-center justify-between text-xs">
-                <span className="text-[var(--muted)]">{pkg.unit}</span>
+              <div className="pt-4 border-t border-[var(--line)] flex items-center justify-end text-xs">
                 <button
                   type="button"
                   onClick={() => onNavigate('catalogue', { query: 'Detailer' })}

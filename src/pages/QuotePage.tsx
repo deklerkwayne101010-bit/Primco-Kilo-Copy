@@ -335,9 +335,6 @@ export const QuotePage: React.FC<QuotePageProps> = ({ onNavigate }) => {
                           <p className="font-bold text-white truncate">
                             {item.product?.name || item.sku}
                           </p>
-                          <span className="text-[10px] text-[var(--muted)]">
-                            {item.product?.unit || 'Unit: Per each'}
-                          </span>
                         </div>
 
                         {/* Quantity Counter */}

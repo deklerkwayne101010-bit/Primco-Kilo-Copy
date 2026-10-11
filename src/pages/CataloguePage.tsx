@@ -881,10 +881,6 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                                   <span className="text-[var(--bright)] font-semibold bg-[#141920] px-1.5 py-0.2 rounded border border-[var(--line)] text-[10px]">
                                     {product.brand}
                                   </span>
-                                  <span className="text-[var(--muted)]">·</span>
-                                  <span className="text-[var(--silver)] text-[11px]">
-                                    {product.unit}
-                                  </span>
                                 </div>
                               </div>
                             </td>
@@ -1007,9 +1003,6 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                             >
                               {product.name}
                             </h4>
-                            <p className="text-[11px] text-[var(--muted)] mt-0.5">
-                              Unit: <span className="text-[var(--silver)] font-medium">{product.unit}</span>
-                            </p>
                           </div>
                         </div>
 
@@ -1127,10 +1120,6 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                           >
                             {product.name}
                           </h3>
-
-                          <p className="text-xs text-[var(--muted)] mt-1">
-                            Pack: <span className="text-[var(--silver)] font-medium">{product.unit}</span>
-                          </p>
                         </div>
 
                         {/* Card Footer: Quantity + Add to Quote */}
