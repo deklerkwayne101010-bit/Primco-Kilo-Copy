@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWhatsApp }) =>
 
             <div className="flex items-center gap-2 text-xs text-emerald-400 mt-1">
               <ShieldCheck size={15} className="shrink-0" />
-              <span>Certified Level 2 B-BBEE Contributor</span>
+              <span>Certified Level 1 B-BBEE Contributor</span>
             </div>
           </div>
 

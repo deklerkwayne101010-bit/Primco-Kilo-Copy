@@ -148,7 +148,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
                 </span>
                 <span className="text-white/20">•</span>
                 <span className="font-mono text-white/80">
-                  Level 2 B-BBEE
+                  Level 1 B-BBEE
                 </span>
               </div>
             </div>

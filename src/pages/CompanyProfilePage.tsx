@@ -25,7 +25,7 @@ export const CompanyProfilePage: React.FC<CompanyProfilePageProps> = ({ onNaviga
     },
     {
       eyebrow: 'REGULATORY COMPLIANCE',
-      name: 'Level 2 B-BBEE & SABS Certified',
+      name: 'Level 1 B-BBEE & SABS Certified',
       desc: 'Full compliance with South African procurement statutes, enterprise development credits, and rigorous product batch traceability for insurance assessor audits.',
       badge: 'Certified Contributor'
     }
@@ -107,7 +107,7 @@ export const CompanyProfilePage: React.FC<CompanyProfilePageProps> = ({ onNaviga
             </div>
             <div className="p-3 bg-[#111418] border border-[var(--line)] rounded">
               <span className="text-[var(--muted)] block mb-1">B-BBEE Recognition:</span>
-              <strong className="text-white text-sm">125% Procurement Recognition (Level 2)</strong>
+              <strong className="text-white text-sm">135% Procurement Recognition (Level 1)</strong>
             </div>
           </div>
 
