@@ -51,31 +51,23 @@ export const RANGES: RangeInfo[] = [
   {
     id: 'automotive-parts',
     name: 'Automotive Parts',
-    description: 'Precision mechanical components, OEM-grade braking, air & oil filtration, batteries and workshop components.',
+    description: 'OEM panel clips, fender screws, speed nuts, rivets, cable ties, badgemounts, adhesives and general workshop supplies.',
     itemCount: 53,
-    highlight: 'Fasteners, Body Hardware & General Supplies',
+    highlight: 'Panel Clips, Fasteners & Body Hardware',
     image: '/assets/images/automotive-parts-primeco.png'
-  },
-  {
-    id: 'vehicle-glass',
-    name: 'Vehicle Glass',
-    description: 'Shatterprufe laminated windscreens, toughened side and rear glass, and OE polyurethane fitting compounds.',
-    itemCount: 0,
-    highlight: 'Laminated Glass & High-Modulus Adhesives',
-    image: '/assets/images/vehicle-glass-primeco.png'
   },
   {
     id: 'paint-solutions',
     name: 'Paint Solutions',
-    description: 'Professional refinishing coatings, high-build epoxy primers, HS clearcoats, spray guns and fine line masking.',
+    description: 'Refinish coatings, 2K primers, HS clearcoats, fillers, putties, thinners, reducers and masking consumables.',
     itemCount: 141,
-    highlight: 'Coatings, Primers, Masking & Polishing',
+    highlight: 'Coatings, Primers, Clearcoats & Masking',
     image: '/assets/images/paint-solutions-primeco.png'
   },
   {
     id: 'tools-supplies',
     name: 'Tools & Supplies',
-    description: 'Dust-free abrasives, workshop hand tools, structural rivets, fasteners, PPE and pneumatic equipment.',
+    description: 'Dust-free abrasives, HVLP spray guns, hose fittings, workshop cleaners, degreasers and technician PPE.',
     itemCount: 91,
     highlight: 'Abrasives, Spray Equipment, Cleaning & PPE',
     image: '/assets/images/tools-supplies-primeco.png'

@@ -180,15 +180,15 @@ export const HomePageAlt: React.FC<HomePageAltProps> = ({
           eyebrow="PRODUCT DIVISIONS"
           title={
             <>
-              Four supply{' '}
+              Three supply{' '}
               <span className="text-[var(--blue)]">divisions</span>
             </>
           }
-          description="Dedicated ranges keeping panel shops, glass fitters, and commercial workshops equipped."
+          description="Dedicated ranges keeping panel shops and commercial workshops equipped."
           align="start"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {RANGES.map((range, idx) => (
             <div
               key={range.id}

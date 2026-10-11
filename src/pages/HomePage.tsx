@@ -206,7 +206,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
         <SectionHead
           eyebrow="PRODUCT DIVISIONS"
           title={<>Engineered for <span className="text-[var(--blue)]">Collision Repairers</span></>}
-          description="Four dedicated supply categories keeping panel shops, glass fitters, and commercial workshops equipped."
+          description="Three dedicated supply divisions keeping panel shops and commercial workshops equipped."
           align="between"
           action={
             <button
@@ -221,7 +221,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
         />
 
         {/* 4-column grid (desktop), 2-col tablet, 1-col mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {RANGES.map((range, idx) => (
             <div
               key={range.id}
@@ -273,7 +273,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
         <SectionHead
           eyebrow="EXPANSIVE WORKSHOP INVENTORY"
           title="Browse by Workshop Category"
-          description="Everything from structural monobolt fasteners to 2K clearcoats and spray booth respiratory kits."
+          description="Everything from panel clips and fender hardware to 2K clearcoats and spray booth respiratory kits."
           align="start"
         />
 
