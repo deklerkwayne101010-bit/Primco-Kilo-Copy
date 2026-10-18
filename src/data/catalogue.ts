@@ -5387,17 +5387,6 @@ export const TEAM_MEMBERS = [
     initials: 'DS'
   },
   {
-    name: 'Chucky Buys',
-    role: 'SALES MANAGER',
-    bio: 'The friendly face behind PRIMECO client service and sales support. Known for his approachable personality, strong communication skills, and commitment to helping clients find the right automotive workshop solutions.',
-    phone: '+27 (0)76 721 1286',
-    cell: '076 721 1286',
-    whatsapp: '+27767211286',
-    email: 'sales@primeco.co.za',
-    image: '/assets/images/team-chucky-buys.png',
-    initials: 'CB'
-  },
-  {
     name: 'Lente Kemp',
     role: 'ACCOUNTS MANAGER',
     bio: 'Manages merchant facilities, monthly trade invoicing, 30-day terms reconciliations, and vendor credit applications for approved body repair centres.',
@@ -5407,6 +5396,28 @@ export const TEAM_MEMBERS = [
     email: 'accounts@primeco.co.za',
     image: '/assets/images/team-lente-kemp.png',
     initials: 'LK'
+  },
+  {
+    name: 'Jacky Schutte',
+    role: 'SALES MANAGER',
+    bio: 'Customer service and sales support at Primeco Supplies.',
+    phone: '+27 (0)76 814 0493',
+    cell: '076 814 0493',
+    whatsapp: '+27768140493',
+    email: 'sales@primeco.co.za',
+    image: '',
+    initials: 'JS'
+  },
+  {
+    name: 'Kyle Batchelor',
+    role: 'SALES CONSULTANT',
+    bio: 'Supporting panel shop clients with parts, sourcing and trade queries.',
+    phone: '+27 (0)73 641 0557',
+    cell: '073 641 0557',
+    whatsapp: '+27736410557',
+    email: 'sales@primeco.co.za',
+    image: '',
+    initials: 'KB'
   }
 ];
 
