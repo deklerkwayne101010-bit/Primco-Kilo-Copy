@@ -89,17 +89,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
             </div>
           </div>
 
-          {/* Card 2: Chucky Buys */}
+          {/* Card 2: Jacky Schutte */}
           <div className="card-base p-6 flex flex-col justify-between hover:border-[var(--blue)] hover:shadow-[var(--glow-md)] transition-all">
             <div>
-              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--blue)] mb-4 bg-[#0a0d11]">
-                <img
-                  src="/assets/images/team-chucky-buys.png"
-                  alt="Chucky Buys, Sales Manager at Primeco Supplies"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-white">Chucky Buys</h3>
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--blue)] mb-4 bg-[#0a0d11]" />
+              <h3 className="text-lg font-bold text-white">Jacky Schutte</h3>
               <p className="text-xs font-bold text-[var(--blue)] uppercase tracking-wider mb-2">
                 Sales Manager
               </p>
@@ -110,20 +104,20 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
 
             <div className="flex flex-col gap-2.5 pt-4 border-t border-[var(--line)] text-xs">
               <a
-                href="tel:+27767211286"
+                href="tel:+27768140493"
                 className="flex items-center gap-2 text-[var(--silver)] hover:text-white"
               >
                 <Phone size={14} className="text-[var(--blue)]" />
-                <span>Cell: 076 721 1286</span>
+                <span>Cell: 076 814 0493</span>
               </a>
               <a
-                href="https://wa.me/27767211286"
+                href="https://wa.me/27768140493"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold cursor-pointer text-left"
               >
                 <MessageSquare size={14} />
-                <span>WhatsApp: 076 721 1286</span>
+                <span>WhatsApp: 076 814 0493</span>
               </a>
               <a
                 href="mailto:sales@primeco.co.za"
@@ -135,39 +129,42 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
             </div>
           </div>
 
-          {/* Card 3: Lente Kemp */}
+          {/* Card 3: Kyle Batchelor */}
           <div className="card-base p-6 flex flex-col justify-between hover:border-[var(--blue)] hover:shadow-[var(--glow-md)] transition-all">
             <div>
-              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--blue)] mb-4 bg-[#0a0d11]">
-                <img
-                  src="/assets/images/team-lente-kemp.png"
-                  alt="Lente Kemp, Accounts Manager at Primeco Supplies"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-white">Lente Kemp</h3>
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--blue)] mb-4 bg-[#0a0d11]" />
+              <h3 className="text-lg font-bold text-white">Kyle Batchelor</h3>
               <p className="text-xs font-bold text-[var(--blue)] uppercase tracking-wider mb-2">
-                Accounts Manager
+                Sales Consultant
               </p>
               <p className="text-xs text-[var(--muted)] mb-6 leading-relaxed">
-                Trade accounts, monthly statements, billing reconciliation, and tax invoice processing.
+                Supporting panel shop clients with parts, sourcing and trade queries.
               </p>
             </div>
 
             <div className="flex flex-col gap-2.5 pt-4 border-t border-[var(--line)] text-xs">
               <a
-                href="tel:+27612954224"
+                href="tel:+27736410557"
                 className="flex items-center gap-2 text-[var(--silver)] hover:text-white"
               >
                 <Phone size={14} className="text-[var(--blue)]" />
-                <span>Cell: 061 295 4224</span>
+                <span>Cell: 073 641 0557</span>
               </a>
               <a
-                href="mailto:accounts@primeco.co.za"
+                href="https://wa.me/27736410557"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold cursor-pointer text-left"
+              >
+                <MessageSquare size={14} />
+                <span>WhatsApp: 073 641 0557</span>
+              </a>
+              <a
+                href="mailto:sales@primeco.co.za"
                 className="flex items-center gap-2 text-[var(--silver)] hover:text-white truncate"
               >
                 <Mail size={14} className="text-[var(--blue)]" />
-                <span className="truncate">accounts@primeco.co.za</span>
+                <span className="truncate">sales@primeco.co.za</span>
               </a>
             </div>
           </div>

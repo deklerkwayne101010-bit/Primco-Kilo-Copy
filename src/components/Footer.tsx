@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWhatsApp }) =>
             </ul>
           </div>
 
-          {/* Column 3: Operations & Sales (Dean & Chucky) (3 cols) */}
+          {/* Column 3: Operations & Sales (3 cols) */}
           <div className="lg:col-span-3 flex flex-col gap-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--bright)] mb-2">
               Operations & Sales
@@ -122,16 +122,30 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWhatsApp }) =>
               </div>
 
               <div className="pt-2 border-t border-[var(--line)]">
-                <p className="text-xs font-bold text-white">Chucky Buys</p>
+                <p className="text-xs font-bold text-white">Jacky Schutte</p>
                 <p className="text-[10px] text-[var(--blue)] font-semibold uppercase">
                   Sales Manager
                 </p>
                 <a
-                  href="tel:+27767211286"
+                  href="tel:+27768140493"
                   className="flex items-center gap-1.5 text-xs text-[var(--silver)] hover:text-white"
                 >
                   <Phone size={12} className="text-[var(--blue)]" />
-                  <span>076 721 1286</span>
+                  <span>076 814 0493</span>
+                </a>
+              </div>
+
+              <div className="pt-2 border-t border-[var(--line)]">
+                <p className="text-xs font-bold text-white">Kyle Batchelor</p>
+                <p className="text-[10px] text-[var(--blue)] font-semibold uppercase">
+                  Sales Consultant
+                </p>
+                <a
+                  href="tel:+27736410557"
+                  className="flex items-center gap-1.5 text-xs text-[var(--silver)] hover:text-white"
+                >
+                  <Phone size={12} className="text-[var(--blue)]" />
+                  <span>073 641 0557</span>
                 </a>
               </div>
 
