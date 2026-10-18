@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWhatsApp }) =>
           <div className="lg:col-span-4 flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <img
-                src="/assets/images/primeco-logo.png"
+                src="/assets/images/primeco-logo.jpeg"
                 alt="Primeco Supplies Logo"
                 className="h-10 w-auto object-contain"
               />
