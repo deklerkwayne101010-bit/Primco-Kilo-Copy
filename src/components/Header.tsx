@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({ activePage, onNavigate }) => {
           {/* Official Logo from primeco.co.za */}
           <div className="h-[46px] lg:h-[54px] flex items-center">
             <img
-              src="/assets/images/primeco-logo.jpeg"
+              src="/assets/images/primeco-logo.png"
               alt="Primeco Supplies Logo"
               className="h-full w-auto object-contain max-w-[210px] filter drop-shadow-[0_2px_10px_rgba(17,152,232,0.2)]"
             />
