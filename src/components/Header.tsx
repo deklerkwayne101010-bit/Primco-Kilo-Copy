@@ -13,7 +13,8 @@ export type PageId =
   | 'company-profile'
   | 'contact'
   | 'quote'
-  | 'privacy';
+  | 'privacy'
+  | 'admin';
 
 interface HeaderProps {
   activePage: PageId;

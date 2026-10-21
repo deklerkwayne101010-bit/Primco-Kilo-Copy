@@ -29,6 +29,7 @@ import { CompanyProfilePage } from './pages/CompanyProfilePage';
 import { ContactPage } from './pages/ContactPage';
 import { QuotePage } from './pages/QuotePage';
 import { PrivacyPage } from './pages/PrivacyPage';
+import { AdminDashboard } from './pages/AdminDashboard';
 
 function AppContent() {
   const [activePage, setActivePage] = useState<PageId>('home');
@@ -149,6 +150,10 @@ function AppContent() {
           <PrivacyPage
             onNavigate={handleNavigate}
           />
+        )}
+
+        {activePage === 'admin' && (
+          <AdminDashboard />
         )}
       </main>
 
