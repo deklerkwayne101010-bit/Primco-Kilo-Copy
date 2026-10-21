@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, Download, FileText, CheckCircle, AlertCircle } from 'lucide-react';
+import { Upload, Download, CheckCircle, AlertCircle } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { CATEGORIES, RANGES } from '../../data/catalogue';
 
@@ -116,6 +116,45 @@ export const BulkUpload: React.FC = () => {
     setUploading(false);
   };
 
+  const importFromCatalogue = async () => {
+    if (!supabase) return;
+    setUploading(true);
+    setResults(null);
+    try {
+      const { PRODUCTS } = await import('../../data/catalogue');
+      const products = PRODUCTS.map(p => ({
+        sku: p.sku,
+        name: p.name,
+        category: p.category,
+        categoryCode: p.categoryCode,
+        categoryName: p.categoryName,
+        subcategory: p.subcategory,
+        subcategoryCode: p.subcategoryCode,
+        subcategoryName: p.subcategoryName,
+        range: p.range,
+        rangeName: p.rangeName,
+        unit: p.unit,
+        description: p.description,
+        brand: p.brand,
+        demo: p.demo || false,
+        featured: p.featured || false,
+        inStock: p.inStock !== false,
+        specs: p.specs || {},
+        imageAlt: p.imageAlt || '',
+        badge: p.badge || ''
+      }));
+      const { error } = await supabase.from('products').upsert(products, { onConflict: 'sku' });
+      if (error) {
+        setResults({ success: 0, errors: [error.message] });
+      } else {
+        setResults({ success: products.length, errors: [] });
+      }
+    } catch (err) {
+      setResults({ success: 0, errors: ['Import failed'] });
+    }
+    setUploading(false);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -161,6 +200,21 @@ export const BulkUpload: React.FC = () => {
             {uploading ? 'Uploading...' : 'Upload Products'}
           </button>
         </div>
+      </div>
+
+      <div className="bg-[#0b0e12] border border-[var(--line)] rounded-[var(--radius-lg)] p-6">
+        <h3 className="font-semibold text-white mb-2">Import from Current Catalogue</h3>
+        <p className="text-sm text-[var(--silver)] mb-4">
+          Import all products from the existing static catalogue.ts file into Supabase
+        </p>
+        <button
+          onClick={importFromCatalogue}
+          disabled={uploading}
+          className="flex items-center gap-2 px-6 py-2.5 bg-[var(--grad-brand)] text-white rounded-lg hover:shadow-[var(--glow-md)] disabled:opacity-50"
+        >
+          <Upload size={16} />
+          {uploading ? 'Importing...' : 'Import All from Catalogue'}
+        </button>
       </div>
 
       {results && (
