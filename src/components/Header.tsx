@@ -54,6 +54,7 @@ export const Header: React.FC<HeaderProps> = ({ activePage, onNavigate }) => {
     { id: 'valet-services', label: 'Valet' },
     { id: 'company-profile', label: 'Profile' },
     { id: 'contact', label: 'Contact' },
+    { id: 'admin', label: 'Admin' },
   ];
 
   const handleNavClick = (id: PageId) => {
