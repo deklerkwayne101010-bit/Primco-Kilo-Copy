@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, Edit, Trash2, Save, X } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Save, X, Upload } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { Product } from '../../types/catalogue';
 import { RANGES, CATEGORIES } from '../../data/catalogue';
@@ -28,7 +28,8 @@ export const ProductManager: React.FC = () => {
     inStock: true,
     demo: false,
     featured: false,
-    specs: {}
+    specs: {},
+    imageUrl: ''
   });
 
   useEffect(() => {
@@ -79,6 +80,29 @@ export const ProductManager: React.FC = () => {
         subcategoryName: subcategory.name
       });
     }
+  };
+
+
+  const handleImageUpload = async (file: File) => {
+    if (!supabase) return;
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${formData.sku || 'product'}-${Date.now()}.${fileExt}`;
+    
+    const { error: uploadError } = await supabase.storage
+      .from('product-images')
+      .upload(fileName, file);
+    
+    if (uploadError) {
+      alert('Error uploading image');
+      console.error(uploadError);
+      return;
+    }
+    
+    const { data } = supabase.storage
+      .from('product-images')
+      .getPublicUrl(fileName);
+    
+    setFormData({ ...formData, imageUrl: data.publicUrl });
   };
 
   const handleSave = async () => {
@@ -274,6 +298,36 @@ export const ProductManager: React.FC = () => {
                   rows={3}
                   className="w-full px-3 py-2 bg-[#080b0e] border border-[var(--line)] rounded-lg text-white focus:outline-none focus:border-[var(--blue)]"
                 />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-[var(--silver)] mb-1.5">Product Image</label>
+                <div className="flex items-center gap-4">
+                  {formData.imageUrl && (
+                    <img src={formData.imageUrl} alt="Product" className="w-20 h-20 object-cover rounded-lg border border-[var(--line)]" />
+                  )}
+                  <label className="flex items-center gap-2 px-4 py-2 bg-[#111418] border border-[var(--line)] text-white rounded-lg hover:bg-[#141920] cursor-pointer">
+                    <Upload size={16} />
+                    Upload Image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handleImageUpload(file);
+                      }}
+                    />
+                  </label>
+                  {formData.imageUrl && (
+                    <button
+                      type="button"
+                      onClick={() => setFormData({...formData, imageUrl: ''})}
+                      className="text-sm text-red-400 hover:text-red-300"
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
               </div>
               <div className="md:col-span-2 flex items-center gap-6">
                 <label className="flex items-center gap-2 text-sm text-[var(--silver)]">

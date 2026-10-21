@@ -19,6 +19,7 @@ export interface Product {
   specs?: Record<string, string>;
   imageAlt?: string;
   badge?: string;
+  imageUrl?: string;
   created_at?: string;
   updated_at?: string;
 }
