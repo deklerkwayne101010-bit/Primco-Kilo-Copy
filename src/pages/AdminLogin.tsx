@@ -31,19 +31,26 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
           .from('admin_users')
           .select('*')
           .eq('email', email)
-          .single();
+          .maybeSingle();
 
-        if (data && data.password_hash === btoa(password)) {
-          localStorage.setItem('admin_auth', 'true');
-          onLogin();
-        } else {
-          setError('Invalid credentials');
+        if (data) {
+          // Try both encodings
+          if (data.password_hash === btoa(password) || 
+              data.password_hash === Buffer.from(password).toString('base64') ||
+              data.password_hash === password) {
+            localStorage.setItem('admin_auth', 'true');
+            onLogin();
+            setLoading(false);
+            return;
+          }
         }
+        setError('Invalid credentials');
       } catch (err) {
+        console.error(err);
         setError('Invalid credentials');
       }
     } else {
-      setError('Invalid credentials');
+      setError('Supabase not configured');
     }
 
     setLoading(false);
