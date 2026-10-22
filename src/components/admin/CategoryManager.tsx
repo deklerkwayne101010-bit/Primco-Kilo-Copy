@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { CategoryInfo, RangeInfo } from '../../types/catalogue';
-import { RANGES } from '../../data/catalogue';
+import { RANGES, CATEGORIES as STATIC_CATEGORIES } from '../../data/catalogue';
 
 export const CategoryManager: React.FC = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -24,7 +24,11 @@ export const CategoryManager: React.FC = () => {
   }, []);
 
   const fetchCategories = async () => {
-    if (!supabase) return;
+    if (!supabase) {
+      setCategories(STATIC_CATEGORIES.map(c => ({...c, id: c.slug})));
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     const { data, error } = await supabase
       .from('categories')
@@ -33,8 +37,9 @@ export const CategoryManager: React.FC = () => {
     
     if (error) {
       console.error('Error fetching categories:', error);
+      setCategories(STATIC_CATEGORIES.map(c => ({...c, id: c.slug})));
     } else {
-      setCategories(data || []);
+      setCategories(data && data.length > 0 ? data : STATIC_CATEGORIES.map(c => ({...c, id: c.slug})));
     }
     setLoading(false);
   };

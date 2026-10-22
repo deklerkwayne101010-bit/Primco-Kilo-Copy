@@ -43,10 +43,26 @@ function AppContent() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activePage]);
 
+
+  // Handle URL routing
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#/', '').replace('#', '');
+      if (hash && ['home', 'about', 'catalogue', 'parts-sourcing', 'quick-order', 'brands', 'valet-services', 'company-profile', 'contact', 'quote', 'privacy', 'admin'].includes(hash)) {
+        setActivePage(hash as PageId);
+      }
+    };
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   const handleNavigate = (page: PageId, extraParams?: any) => {
     setActivePage(page);
     setPageParams(extraParams || {});
+    window.location.hash = page === 'home' ? '' : page;
   };
+
 
   const handleOpenWhatsApp = () => {
     window.open('https://wa.me/27799011544?text=Hi%20Dean%2C%20I%20am%20enquiring%20about%20Primeco%20workshop%20supplies', '_blank');

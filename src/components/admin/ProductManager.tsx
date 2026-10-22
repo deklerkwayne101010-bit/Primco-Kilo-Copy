@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Search, Edit, Trash2, Save, X, Upload } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { Product } from '../../types/catalogue';
-import { RANGES, CATEGORIES } from '../../data/catalogue';
+import { RANGES, CATEGORIES, PRODUCTS } from '../../data/catalogue';
 
 export const ProductManager: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -37,7 +37,11 @@ export const ProductManager: React.FC = () => {
   }, []);
 
   const fetchProducts = async () => {
-    if (!supabase) return;
+    if (!supabase) {
+      setProducts(PRODUCTS as any);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     const { data, error } = await supabase
       .from('products')
@@ -46,8 +50,10 @@ export const ProductManager: React.FC = () => {
     
     if (error) {
       console.error('Error fetching products:', error);
+      // Fallback to static data
+      setProducts(PRODUCTS as any);
     } else {
-      setProducts(data || []);
+      setProducts(data && data.length > 0 ? data : (PRODUCTS as any));
     }
     setLoading(false);
   };
