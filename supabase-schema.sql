@@ -120,3 +120,22 @@ FOR DELETE USING (bucket_id = 'product-images');
 
 -- Add image_url column to products table if it doesn't exist
 ALTER TABLE products ADD COLUMN IF NOT EXISTS image_url TEXT;
+
+-- Admin users table
+CREATE TABLE IF NOT EXISTS admin_users (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Enable RLS
+ALTER TABLE admin_users ENABLE ROW LEVEL SECURITY;
+
+-- Allow read for auth check (be careful in production)
+CREATE POLICY "Allow read for auth" ON admin_users FOR SELECT USING (true);
+
+-- Default admin user (change password in production)
+INSERT INTO admin_users (email, password_hash) 
+VALUES ('admin@primeco.co.za', 'cHJpbWVjbzIwMjQ=')
+ON CONFLICT (email) DO NOTHING;

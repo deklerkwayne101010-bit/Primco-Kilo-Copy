@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { AdminLogin } from './AdminLogin';
+import { LogOut } from 'lucide-react';
 import { LayoutDashboard, Package, FolderTree, Settings, Upload, Download, Plus } from 'lucide-react';
 import { ProductManager } from '../components/admin/ProductManager';
 import { CategoryManager } from '../components/admin/CategoryManager';
@@ -10,6 +12,26 @@ type TabId = 'overview' | 'products' | 'categories' | 'bulk-upload';
 export const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabId>('overview');
   const configured = isSupabaseConfigured();
+
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [checking, setChecking] = useState(true);
+
+  useEffect(() => {
+    const auth = localStorage.getItem('admin_auth');
+    setIsAuthenticated(auth === 'true');
+    setChecking(false);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('admin_auth');
+    setIsAuthenticated(false);
+    window.location.hash = '';
+  };
+
+  if (checking) return <div className="min-h-screen bg-[var(--ink)] flex items-center justify-center text-white">Loading...</div>;
+  if (!isAuthenticated) return <AdminLogin onLogin={() => setIsAuthenticated(true)} />;
+
 
   if (!configured) {
     return (
@@ -46,12 +68,21 @@ export const AdminDashboard: React.FC = () => {
               <h1 className="text-xl font-bold text-white">Primeco Admin Dashboard</h1>
               <p className="text-sm text-[var(--muted)]">Catalogue Management System</p>
             </div>
-            <a 
-              href="/" 
-              className="px-4 py-2 bg-[#111418] border border-[var(--line)] rounded-lg text-sm hover:bg-[#141920] transition-colors"
-            >
-              Back to Site
-            </a>
+            <div className="flex items-center gap-2">
+              <a 
+                href="#/" 
+                className="px-4 py-2 bg-[#111418] border border-[var(--line)] rounded-lg text-sm hover:bg-[#141920] transition-colors"
+              >
+                Back to Site
+              </a>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-4 py-2 bg-[#111418] border border-red-500/40 text-red-400 rounded-lg text-sm hover:bg-red-500/10 transition-colors"
+              >
+                <LogOut size={16} />
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </header>
