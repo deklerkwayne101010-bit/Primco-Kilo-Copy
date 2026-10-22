@@ -139,3 +139,17 @@ CREATE POLICY "Allow read for auth" ON admin_users FOR SELECT USING (true);
 INSERT INTO admin_users (email, password_hash) 
 VALUES ('admin@primeco.co.za', 'cHJpbWVjbzIwMjQ=')
 ON CONFLICT (email) DO NOTHING;
+
+-- Fix storage policies to be more permissive
+DROP POLICY IF EXISTS "Authenticated users can upload product images" ON storage.objects;
+DROP POLICY IF EXISTS "Authenticated users can update product images" ON storage.objects;
+DROP POLICY IF EXISTS "Authenticated users can delete product images" ON storage.objects;
+
+CREATE POLICY "Allow uploads to product images" ON storage.objects
+FOR INSERT WITH CHECK (bucket_id = 'product-images');
+
+CREATE POLICY "Allow updates to product images" ON storage.objects
+FOR UPDATE USING (bucket_id = 'product-images');
+
+CREATE POLICY "Allow deletes from product images" ON storage.objects
+FOR DELETE USING (bucket_id = 'product-images');
