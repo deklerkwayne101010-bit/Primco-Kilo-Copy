@@ -253,7 +253,7 @@ export const PRODUCTS: Product[] = [
   // D - Abrasives & Sanding
   {
     sku: '00968',
-    imageUrl: '/assets/images/products/00968.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/00968.jpg',
     name: '3M P1200 DISK',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -328,7 +328,7 @@ export const PRODUCTS: Product[] = [
   // D - Abrasives & Sanding
   {
     sku: '02022',
-    imageUrl: '/assets/images/products/02022.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/02022.jpg',
     name: '3M P1200 WATER PAPER',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -348,7 +348,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: '02023',
-    imageUrl: '/assets/images/products/02023.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/02023.jpg',
     name: '3M P1500 WATER PAPER',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -368,7 +368,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: '02044',
-    imageUrl: '/assets/images/products/02044.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/02044.jpg',
     name: '3M P2000 WATER PAPER',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -489,7 +489,7 @@ export const PRODUCTS: Product[] = [
   // B - Masking & Paint Preparation
   {
     sku: '06349',
-    imageUrl: '/assets/images/products/06349.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/06349.jpg',
     name: '3M TRIM TAPE',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -812,7 +812,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: '2515',
-    imageUrl: '/assets/images/products/2515.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/2515.jpg',
     name: 'S-MATE MATT BLACK',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -916,7 +916,7 @@ export const PRODUCTS: Product[] = [
   // D - Abrasives & Sanding
   {
     sku: '33439',
-    imageUrl: '/assets/images/products/33439.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/33439.jpg',
     name: 'P60 FILE BELT',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -936,7 +936,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: '33440',
-    imageUrl: '/assets/images/products/33440.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/33440.jpg',
     name: 'P80 FILE BELT',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -958,7 +958,7 @@ export const PRODUCTS: Product[] = [
   // J - Adhesives, Sealants & Bonding
   {
     sku: '33585',
-    imageUrl: '/assets/images/products/33585.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/33585.jpg',
     name: '3M CONTACT ARM ASSEMBLY',
     category: 'adhesives-sealants',
     categoryCode: 'J',
@@ -1065,7 +1065,7 @@ export const PRODUCTS: Product[] = [
   // C - Polishing & Detailing
   {
     sku: '51815',
-    imageUrl: '/assets/images/products/51815.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/51815.jpg',
     name: 'FAST CUT PLUS XTREAM',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -1102,7 +1102,7 @@ export const PRODUCTS: Product[] = [
   // G - Safety Gear & PPE
   {
     sku: '6281',
-    imageUrl: '/assets/images/products/6281.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/6281.jpg',
     name: '3M SPRAY MASK STRAPS',
     category: 'safety-ppe',
     categoryCode: 'G',
@@ -1119,7 +1119,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: '6312L',
-    imageUrl: '/assets/images/products/6312L.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/6312L.jpg',
     name: '3M SPRAY MASK (L)',
     category: 'safety-ppe',
     categoryCode: 'G',
@@ -1210,7 +1210,7 @@ export const PRODUCTS: Product[] = [
   // C - Polishing & Detailing
   {
     sku: '8880',
-    imageUrl: '/assets/images/products/8880.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/8880.jpg',
     name: 'COLAD POLISHING WIPES',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -1229,7 +1229,7 @@ export const PRODUCTS: Product[] = [
   // D - Abrasives & Sanding
   {
     sku: 'ABL-77',
-    imageUrl: '/assets/images/products/ABL-77.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/ABL-77.jpg',
     name: 'ABRALON DISC 77MM P2000',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -1466,7 +1466,7 @@ export const PRODUCTS: Product[] = [
   // E - Tools & Spray Equipment
   {
     sku: 'AST128N',
-    imageUrl: '/assets/images/products/AST128N.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/AST128N.jpg',
     name: 'SPRAY GUN SLIM X LIGHT S.HALO 1.3MM',
     category: 'tools-spray-equipment',
     categoryCode: 'E',
@@ -1645,7 +1645,7 @@ export const PRODUCTS: Product[] = [
   // B - Masking & Paint Preparation
   {
     sku: 'BC-T',
-    imageUrl: '/assets/images/products/BC-T.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/BC-T.jpg',
     name: 'GERSON TACK CLOTH BLU',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -1664,7 +1664,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'BD007',
-    imageUrl: '/assets/images/products/BD007.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/BD007.jpg',
     name: 'BD - PAINT STRAINERS 190MIC',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -1913,7 +1913,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'BIN302',
-    imageUrl: '/assets/images/products/BIN302.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/BIN302.jpg',
     name: 'BINIC CD 115X1X22.2',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -2205,7 +2205,7 @@ export const PRODUCTS: Product[] = [
   // C - Polishing & Detailing
   {
     sku: 'FAR022',
-    imageUrl: '/assets/images/products/FAR022.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FAR022.jpg',
     name: 'G3 PASTE 400G',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -2222,7 +2222,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FAR093',
-    imageUrl: '/assets/images/products/FAR093.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FAR093.jpg',
     name: 'G3 CLAY MITT',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -2239,7 +2239,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FAR238',
-    imageUrl: '/assets/images/products/FAR238.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FAR238.jpg',
     name: 'G3 WAX 1L',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -2306,7 +2306,7 @@ export const PRODUCTS: Product[] = [
   // E - Tools & Spray Equipment
   {
     sku: 'FCA-S-SCRAP-4',
-    imageUrl: '/assets/images/products/FCA-S-SCRAP-4.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FCA-S-SCRAP-4.jpg',
     name: 'CS CARLA 4PCS SCRAPER SET STAINLESS S',
     category: 'tools-spray-equipment',
     categoryCode: 'E',
@@ -2428,7 +2428,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FGN-MBL001',
-    imageUrl: '/assets/images/products/FGN-MBL001.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FGN-MBL001.jpg',
     name: 'LUXLINE MATT BLACK',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2445,7 +2445,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FGN-SBL005',
-    imageUrl: '/assets/images/products/FGN-SBL005.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FGN-SBL005.jpg',
     name: 'LUXLINE SATIN BLACK',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2526,7 +2526,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FGO-THI005',
-    imageUrl: '/assets/images/products/FGO-THI005.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FGO-THI005.jpg',
     name: 'AUTO GOLD 2K REDUCER NORMAL AGS2',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2543,7 +2543,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FGP-WHI005',
-    imageUrl: '/assets/images/products/FGP-WHI005.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FGP-WHI005.jpg',
     name: 'LUXPRIME WHITE PRIMER',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2592,7 +2592,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX001',
-    imageUrl: '/assets/images/products/FIX001.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX001.jpg',
     name: 'FIXON GUIDE COAT DRY (BLACK) 100GR',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2627,7 +2627,7 @@ export const PRODUCTS: Product[] = [
   // B - Masking & Paint Preparation
   {
     sku: 'FIX005N',
-    imageUrl: '/assets/images/products/FIX005N.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX005N.jpg',
     name: 'FIXON FINE LINE TAPE BLUE 6MM X 33M',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2649,7 +2649,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'FIX006',
-    imageUrl: '/assets/images/products/FIX006.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX006.jpg',
     name: 'FIXON NYLON PAINT STRAINER 125 MICRON U',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2669,7 +2669,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX007',
-    imageUrl: '/assets/images/products/FIX007.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX007.jpg',
     name: 'FIXON NYLON PAINT STRAINER 190 MICRON U',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2691,7 +2691,7 @@ export const PRODUCTS: Product[] = [
   // B - Masking & Paint Preparation
   {
     sku: 'FIX010',
-    imageUrl: '/assets/images/products/FIX010.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX010.jpg',
     name: 'FIXON MIXING CUPS 400ML 50PCS',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2711,7 +2711,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX011',
-    imageUrl: '/assets/images/products/FIX011.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX011.jpg',
     name: 'FIXON MIXING CUPS 650ML 50PCS',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2731,7 +2731,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX012',
-    imageUrl: '/assets/images/products/FIX012.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX012.jpg',
     name: 'FIXON MIXING CUPS 1300ML 50PCS',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2751,7 +2751,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX013',
-    imageUrl: '/assets/images/products/FIX013.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX013.jpg',
     name: 'FIXON MIXING CUPS 2240ML 50PCS',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2771,7 +2771,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX020',
-    imageUrl: '/assets/images/products/FIX020.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX020.jpg',
     name: 'FIXON DEGREASING CLOTH 32CM X 36CM 500PC',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2788,7 +2788,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX022',
-    imageUrl: '/assets/images/products/FIX022.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX022.jpg',
     name: 'FIXON ADHESIVE MASKING FOAM TAPE 13MM X',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2810,7 +2810,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'FIX044N',
-    imageUrl: '/assets/images/products/FIX044N.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX044N.jpg',
     name: 'FIXON COMPLETE VACUUM PAINT CUP SYSTEM',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2829,7 +2829,7 @@ export const PRODUCTS: Product[] = [
   // B - Masking & Paint Preparation
   {
     sku: 'FIX056',
-    imageUrl: '/assets/images/products/FIX056.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX056.jpg',
     name: 'FIXON TRIM MASKING TAPE 52MM X 10M',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2849,7 +2849,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX071',
-    imageUrl: '/assets/images/products/FIX071.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX071.jpg',
     name: 'FIXON MASKING FILM 4M X 300M',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -2900,7 +2900,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FIX102',
-    imageUrl: '/assets/images/products/FIX102.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX102.jpg',
     name: 'FIXON F-FILLER 1KG',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -2919,7 +2919,7 @@ export const PRODUCTS: Product[] = [
   // G - Safety Gear & PPE
   {
     sku: 'FIX202',
-    imageUrl: '/assets/images/products/FIX202.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIX202.jpg',
     name: 'FIXON NITRLE GLOVES L (50PCS)',
     category: 'safety-ppe',
     categoryCode: 'G',
@@ -3002,7 +3002,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'FIXCOMB01',
-    imageUrl: '/assets/images/products/FIXCOMB01.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIXCOMB01.jpg',
     name: 'ULTIMATE FIXON PAINT PROTECTION FILM',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -3021,7 +3021,7 @@ export const PRODUCTS: Product[] = [
   // B - Masking & Paint Preparation
   {
     sku: 'FIXCOMB03',
-    imageUrl: '/assets/images/products/FIXCOMB03.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FIXCOMB03.jpg',
     name: 'FIXON ULTIMATE PREPERATION',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -3161,7 +3161,7 @@ export const PRODUCTS: Product[] = [
   // K - Vehicle Cleaning & Interior Care
   {
     sku: 'G03016',
-    imageUrl: '/assets/images/products/G03016.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/G03016.jpg',
     name: 'GL ENRICH LEARHER COND 300ML',
     category: 'vehicle-cleaning-interior',
     categoryCode: 'K',
@@ -3180,7 +3180,7 @@ export const PRODUCTS: Product[] = [
   // F - Cleaning & Surface Care
   {
     sku: 'G03015',
-    imageUrl: '/assets/images/products/G03015.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/G03015.jpg',
     name: 'GL PURELIFT LEATHER CLEAN 473M',
     category: 'cleaning-surface-care',
     categoryCode: 'F',
@@ -3214,7 +3214,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'G10029',
-    imageUrl: '/assets/images/products/G10029.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/G10029.jpg',
     name: 'GL CEILING CLEANING GUN',
     category: 'cleaning-surface-care',
     categoryCode: 'F',
@@ -3283,7 +3283,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'GLI001',
-    imageUrl: '/assets/images/products/GLI001.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/GLI001.jpg',
     name: 'NITRO SINGLE ST COMP',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -3300,7 +3300,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'GLI008',
-    imageUrl: '/assets/images/products/GLI008.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/GLI008.jpg',
     name: 'NITRO BSHOP DETAIL 1',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -3317,7 +3317,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'GLI052',
-    imageUrl: '/assets/images/products/GLI052.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/GLI052.jpg',
     name: 'NITRO BLACK WAFF FINISH',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -3336,7 +3336,7 @@ export const PRODUCTS: Product[] = [
   // C - Polishing & Detailing
   {
     sku: 'GLI056',
-    imageUrl: '/assets/images/products/GLI056.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/GLI056.jpg',
     name: 'GLISSEN HIGH CUT WOOL FOAM 150MM',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -3554,7 +3554,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'K540NT',
-    imageUrl: '/assets/images/products/K540NT.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/K540NT.jpg',
     name: 'ADHESION PROMOTER',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -3612,7 +3612,7 @@ export const PRODUCTS: Product[] = [
   // E - Tools & Spray Equipment
   {
     sku: 'LUJ5413',
-    imageUrl: '/assets/images/products/LUJ5413.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/LUJ5413.jpg',
     name: 'HEADLIGHT BEAM AIMER',
     category: 'tools-spray-equipment',
     categoryCode: 'E',
@@ -3736,7 +3736,7 @@ export const PRODUCTS: Product[] = [
   // F - Cleaning & Surface Care
   {
     sku: 'MF84',
-    imageUrl: '/assets/images/products/MF84.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/MF84.jpg',
     name: 'MANIAC PLASTIC PROTECTANT 500ML',
     category: 'cleaning-surface-care',
     categoryCode: 'F',
@@ -3795,7 +3795,7 @@ export const PRODUCTS: Product[] = [
   // E - Tools & Spray Equipment
   {
     sku: 'PDB170068',
-    imageUrl: '/assets/images/products/PDB170068.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/PDB170068.jpg',
     name: 'DEMOITION BREAKER 1700W',
     category: 'tools-spray-equipment',
     categoryCode: 'E',
@@ -3862,7 +3862,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'PRESTA-SS',
-    imageUrl: '/assets/images/products/PRESTA-SS.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/PRESTA-SS.jpg',
     name: 'PRESTA SCUFF STUFF',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -3917,7 +3917,7 @@ export const PRODUCTS: Product[] = [
   // E - Tools & Spray Equipment
   {
     sku: 'QB2',
-    imageUrl: '/assets/images/products/QB2.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/QB2.jpg',
     name: 'SMALL REPAIR KIT',
     category: 'tools-spray-equipment',
     categoryCode: 'E',
@@ -3936,7 +3936,7 @@ export const PRODUCTS: Product[] = [
   // J - Adhesives, Sealants & Bonding
   {
     sku: 'QB3',
-    imageUrl: '/assets/images/products/QB3.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/QB3.jpg',
     name: 'LARGE Q-BOND KIT',
     category: 'adhesives-sealants',
     categoryCode: 'J',
@@ -4068,7 +4068,7 @@ export const PRODUCTS: Product[] = [
   // J - Adhesives, Sealants & Bonding
   {
     sku: 'SD33422',
-    imageUrl: '/assets/images/products/SD33422.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/SD33422.jpg',
     name: '32675 SOUDAL CONTACT ADHESIVE SPRAY',
     category: 'adhesives-sealants',
     categoryCode: 'J',
@@ -4157,7 +4157,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'SH789',
-    imageUrl: '/assets/images/products/SH789.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/SH789.jpg',
     name: 'SP16 - COMPOUND PAD',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -4376,7 +4376,7 @@ export const PRODUCTS: Product[] = [
   // E - Tools & Spray Equipment
   {
     sku: 'STAN-B',
-    imageUrl: '/assets/images/products/STAN-B.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/STAN-B.jpg',
     name: 'STANLEY BLADES',
     category: 'tools-spray-equipment',
     categoryCode: 'E',
@@ -4395,7 +4395,7 @@ export const PRODUCTS: Product[] = [
   // D - Abrasives & Sanding
   {
     sku: 'SUN202',
-    imageUrl: '/assets/images/products/SUN202.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/SUN202.jpg',
     name: 'SUNMIGHT VELCRO GOLD 150MM (P80)',
     category: 'abrasives-sanding',
     categoryCode: 'D',
@@ -4486,7 +4486,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'TEM181',
-    imageUrl: '/assets/images/products/TEM181.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TEM181.jpg',
     name: '0.8MM 100 PCE STAPLES S WAVE TIP',
     category: 'fasteners-body-hardware',
     categoryCode: 'H',
@@ -4507,7 +4507,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'TEM182',
-    imageUrl: '/assets/images/products/TEM182.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TEM182.jpg',
     name: '0.8MM 100PCE STAPLES CORNER TIP',
     category: 'fasteners-body-hardware',
     categoryCode: 'H',
@@ -4528,7 +4528,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'TEM183',
-    imageUrl: '/assets/images/products/TEM183.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TEM183.jpg',
     name: '0.8MM 100PCE STAPLES WAVE TIP',
     category: 'fasteners-body-hardware',
     categoryCode: 'H',
@@ -4551,7 +4551,7 @@ export const PRODUCTS: Product[] = [
   // J - Adhesives, Sealants & Bonding
   {
     sku: 'TER-9320',
-    imageUrl: '/assets/images/products/TER-9320.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TER-9320.jpg',
     name: 'TEROSON MS 9320 310 ML',
     category: 'adhesives-sealants',
     categoryCode: 'J',
@@ -4604,7 +4604,7 @@ export const PRODUCTS: Product[] = [
   // F - Cleaning & Surface Care
   {
     sku: 'TN10',
-    imageUrl: '/assets/images/products/TN10.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TN10.jpg',
     name: 'TONYIN PLASTIC RESTORER 300ML',
     category: 'cleaning-surface-care',
     categoryCode: 'F',
@@ -4623,7 +4623,7 @@ export const PRODUCTS: Product[] = [
   // C - Polishing & Detailing
   {
     sku: 'TP08A',
-    imageUrl: '/assets/images/products/TP08A.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TP08A.jpg',
     name: 'TONYIN MICROFIBRE CUTTING PAD 5"',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -4640,7 +4640,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'TP15A',
-    imageUrl: '/assets/images/products/TP15A.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TP15A.jpg',
     name: 'TONYIN GREEN MOP',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -4657,7 +4657,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'TP27',
-    imageUrl: '/assets/images/products/TP27.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TP27.jpg',
     name: 'TONYIN PADS FOR NANO CORDLESS POLISHER',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -4674,7 +4674,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'TT01B',
-    imageUrl: '/assets/images/products/TT01B.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TT01B.jpg',
     name: 'TONYIN DETAILING SWIRL FINDER LIGHT',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -4691,7 +4691,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'TT18B',
-    imageUrl: '/assets/images/products/TT18B.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TT18B.jpg',
     name: 'TONYIN CAR WAX POLISHING MICROFIBRE',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -4708,7 +4708,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'TYDA1',
-    imageUrl: '/assets/images/products/TYDA1.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/TYDA1.jpg',
     name: 'BATTERY CORDLESS POLISHER',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -4727,7 +4727,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'UPLO-TR',
-    imageUrl: '/assets/images/products/UPLO-TR.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/UPLO-TR.jpg',
     name: 'RAPTOR LINER TRACTION NON SLIP ADETIVE',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4744,7 +4744,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'UPOL-DG',
-    imageUrl: '/assets/images/products/UPOL-DG.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/UPOL-DG.jpg',
     name: 'U-POL DOLPHIN GLAZE 440ML',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4761,7 +4761,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'UPOL-P40BM',
-    imageUrl: '/assets/images/products/UPOL-P40BM.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/UPOL-P40BM.jpg',
     name: 'FIBRAL 440 ML',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4778,7 +4778,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'VOS002',
-    imageUrl: '/assets/images/products/VOS002.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS002.jpg',
     name: 'B/FILLER ELAST WHITE 1KG',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4795,7 +4795,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'VOS027',
-    imageUrl: '/assets/images/products/VOS027.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS027.jpg',
     name: 'VOS PRIMER SPRAY 1K 400ML',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4812,7 +4812,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'VOS056',
-    imageUrl: '/assets/images/products/VOS056.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS056.jpg',
     name: 'VOS A/FIT SPRAY FILLER 1.5KG',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4847,7 +4847,7 @@ export const PRODUCTS: Product[] = [
   // B - Masking & Paint Preparation
   {
     sku: 'VOS122',
-    imageUrl: '/assets/images/products/VOS122.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS122.jpg',
     name: 'VOS FOAM TAPE CLASSING 13MM',
     category: 'masking-prep',
     categoryCode: 'B',
@@ -4869,7 +4869,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'VOS135',
-    imageUrl: '/assets/images/products/VOS135.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS135.jpg',
     name: 'VOS B/FILLER STEEL 0.9KG',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4906,7 +4906,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'VOS164',
-    imageUrl: '/assets/images/products/VOS164.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS164.jpg',
     name: 'VOS PAINT OVERALL - L',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4923,7 +4923,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'VOS165',
-    imageUrl: '/assets/images/products/VOS165.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS165.jpg',
     name: 'PAINT OVERALL NAVY - SIZE XL',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4940,7 +4940,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'VOS166',
-    imageUrl: '/assets/images/products/VOS166.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS166.jpg',
     name: 'PAINT OVERALL NAVY - SIZE XXL',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4977,7 +4977,7 @@ export const PRODUCTS: Product[] = [
   // A - Paints, Primers & Coatings
   {
     sku: 'VOS178',
-    imageUrl: '/assets/images/products/VOS178.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS178.jpg',
     name: 'VOS ZINC SPRAY 400ML',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -4996,7 +4996,7 @@ export const PRODUCTS: Product[] = [
   // J - Adhesives, Sealants & Bonding
   {
     sku: 'VOS180',
-    imageUrl: '/assets/images/products/VOS180.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS180.jpg',
     name: 'BUMP / STRUCTURED SRP BLACK',
     category: 'adhesives-sealants',
     categoryCode: 'J',
@@ -5031,7 +5031,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'VOS255',
-    imageUrl: '/assets/images/products/VOS255.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/VOS255.jpg',
     name: 'PAINT OVERALL NAVY - SIZE M',
     category: 'paints-coatings',
     categoryCode: 'A',
@@ -5068,7 +5068,7 @@ export const PRODUCTS: Product[] = [
   // G - Safety Gear & PPE
   {
     sku: '87921E2B',
-    imageUrl: '/assets/images/products/87921E2B.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/87921E2B.jpg',
     name: 'GERSON HALF MASK REPLACEABLE',
     category: 'safety-ppe',
     categoryCode: 'G',
@@ -5109,7 +5109,7 @@ export const PRODUCTS: Product[] = [
   // C - Polishing & Detailing
   {
     sku: 'FAR094',
-    imageUrl: '/assets/images/products/FAR094.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FAR094.jpg',
     name: 'FAR G3 PRO RAPID DETAILR 500ML',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -5126,7 +5126,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     sku: 'FAR295',
-    imageUrl: '/assets/images/products/FAR295.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FAR295.jpg',
     name: 'FAR G360 SUPER FAST COMPOUND',
     category: 'polishing-detailing',
     categoryCode: 'C',
@@ -5362,7 +5362,7 @@ export const PRODUCTS: Product[] = [
   // F - Cleaning & Surface Care
   {
     sku: 'FTCSHR141420BG',
-    imageUrl: '/assets/images/products/FTCSHR141420BG.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/FTCSHR141420BG.jpg',
     name: 'FC D/TOWEL CORAL TA BEIGE 20PC',
     category: 'cleaning-surface-care',
     categoryCode: 'F',
@@ -5381,7 +5381,7 @@ export const PRODUCTS: Product[] = [
   // C - Polishing & Detailing
   {
     sku: 'EUSLJLS161636GR',
-    imageUrl: '/assets/images/products/EUSLJLS161636GR.jpg',
+    imageUrl: 'https://cxbpvrjacqotoovxzldf.supabase.co/storage/v1/object/public/product-images/EUSLJLS161636GR.jpg',
     name: 'FC D/MICROFIBRE GREY',
     category: 'polishing-detailing',
     categoryCode: 'C',
