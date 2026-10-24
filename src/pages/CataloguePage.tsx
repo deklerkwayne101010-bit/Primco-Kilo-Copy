@@ -1083,11 +1083,15 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                         </span>
 
                         <div className="w-full h-full transition-transform duration-300 ease-out group-hover:scale-105">
-                          <ProductGraphic
-                            sku={product.sku}
-                            category={product.category}
-                            name={product.name}
-                          />
+                          {product.imageUrl ? (
+                            <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain" />
+                          ) : (
+                            <ProductGraphic
+                              sku={product.sku}
+                              category={product.category}
+                              name={product.name}
+                            />
+                          )}
                         </div>
                       </div>
 

@@ -617,11 +617,15 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
                     className="relative h-48 w-full cursor-pointer overflow-hidden border-b border-[var(--line)]"
                   >
                     <div className="w-full h-full transition-transform duration-500 group-hover:scale-105">
-                      <ProductGraphic
-                        sku={product.sku}
-                        category={product.category}
-                        name={product.name}
-                      />
+                      {product.imageUrl ? (
+                        <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain" />
+                      ) : (
+                        <ProductGraphic
+                          sku={product.sku}
+                          category={product.category}
+                          name={product.name}
+                        />
+                      )}
                     </div>
                     <span className="metallic-badge absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded-full">
                       {product.subcategoryName}
