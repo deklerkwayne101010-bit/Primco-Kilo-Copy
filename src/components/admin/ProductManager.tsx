@@ -43,17 +43,22 @@ export const ProductManager: React.FC = () => {
       return;
     }
     setLoading(true);
-    const { data, error } = await supabase
-      .from('products')
-      .select('*')
-      .order('sku');
-    
-    if (error) {
-      console.error('Error fetching products:', error);
-      // Fallback to static data
+    try {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .order('sku');
+      
+      if (error) {
+        console.error('Error fetching products:', error);
+        // Fallback to static data
+        setProducts(PRODUCTS as any);
+      } else {
+        setProducts(data && data.length > 0 ? data : (PRODUCTS as any));
+      }
+    } catch (err) {
+      console.error('Fetch error:', err);
       setProducts(PRODUCTS as any);
-    } else {
-      setProducts(data && data.length > 0 ? data : (PRODUCTS as any));
     }
     setLoading(false);
   };
@@ -114,14 +119,17 @@ export const ProductManager: React.FC = () => {
   const handleSave = async () => {
     if (!supabase) return;
     
+    // Clean up data - remove fields that might not exist in DB
+    const { id, ...updateData } = formData as any;
+    
     if (isCreating) {
       const { error } = await supabase
         .from('products')
-        .insert([formData]);
+        .insert([updateData]);
       
       if (error) {
         console.error('Error creating product:', error);
-        alert('Error creating product');
+        alert('Error creating product: ' + error.message);
       } else {
         alert('Product created successfully');
         setIsCreating(false);
@@ -129,19 +137,19 @@ export const ProductManager: React.FC = () => {
           sku: '', name: '', category: '', categoryCode: '', categoryName: '',
           subcategory: '', subcategoryCode: '', subcategoryName: '',
           range: 'automotive-parts', rangeName: '', unit: '', description: '',
-          brand: '', inStock: true, demo: false, featured: false, specs: {}
+          brand: '', inStock: true, demo: false, featured: false, specs: {}, imageUrl: ''
         });
         fetchProducts();
       }
     } else if (editingProduct) {
       const { error } = await supabase
         .from('products')
-        .update(formData)
+        .update(updateData)
         .eq('sku', editingProduct.sku);
       
       if (error) {
         console.error('Error updating product:', error);
-        alert('Error updating product');
+        alert('Error updating product: ' + error.message);
       } else {
         alert('Product updated successfully');
         setEditingProduct(null);

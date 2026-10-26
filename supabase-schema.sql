@@ -63,6 +63,7 @@ CREATE TABLE IF NOT EXISTS products (
   specs JSONB DEFAULT '{}',
   image_alt TEXT,
   badge TEXT,
+  image_url TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -100,27 +101,6 @@ CREATE POLICY "Allow all operations on categories" ON categories FOR ALL USING (
 CREATE POLICY "Allow all operations on subcategories" ON subcategories FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Allow all operations on products" ON products FOR ALL USING (true) WITH CHECK (true);
 
--- Storage bucket for product images
-INSERT INTO storage.buckets (id, name, public) 
-VALUES ('product-images', 'product-images', true)
-ON CONFLICT (id) DO NOTHING;
-
--- Storage policies for product images
-CREATE POLICY "Public read access for product images" ON storage.objects
-FOR SELECT USING (bucket_id = 'product-images');
-
-CREATE POLICY "Authenticated users can upload product images" ON storage.objects
-FOR INSERT WITH CHECK (bucket_id = 'product-images');
-
-CREATE POLICY "Authenticated users can update product images" ON storage.objects
-FOR UPDATE USING (bucket_id = 'product-images');
-
-CREATE POLICY "Authenticated users can delete product images" ON storage.objects
-FOR DELETE USING (bucket_id = 'product-images');
-
--- Add image_url column to products table if it doesn't exist
-ALTER TABLE products ADD COLUMN IF NOT EXISTS image_url TEXT;
-
 -- Admin users table
 CREATE TABLE IF NOT EXISTS admin_users (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -132,7 +112,7 @@ CREATE TABLE IF NOT EXISTS admin_users (
 -- Enable RLS
 ALTER TABLE admin_users ENABLE ROW LEVEL SECURITY;
 
--- Allow read for auth check (be careful in production)
+-- Allow read for auth check
 CREATE POLICY "Allow read for auth" ON admin_users FOR SELECT USING (true);
 
 -- Default admin user (change password in production)
@@ -140,10 +120,14 @@ INSERT INTO admin_users (email, password_hash)
 VALUES ('admin@primeco.co.za', 'cHJpbWVjbzIwMjQ=')
 ON CONFLICT (email) DO NOTHING;
 
--- Fix storage policies to be more permissive
-DROP POLICY IF EXISTS "Authenticated users can upload product images" ON storage.objects;
-DROP POLICY IF EXISTS "Authenticated users can update product images" ON storage.objects;
-DROP POLICY IF EXISTS "Authenticated users can delete product images" ON storage.objects;
+-- Storage bucket for product images
+INSERT INTO storage.buckets (id, name, public) 
+VALUES ('product-images', 'product-images', true)
+ON CONFLICT (id) DO NOTHING;
+
+-- Storage policies for product images
+CREATE POLICY "Public read access for product images" ON storage.objects
+FOR SELECT USING (bucket_id = 'product-images');
 
 CREATE POLICY "Allow uploads to product images" ON storage.objects
 FOR INSERT WITH CHECK (bucket_id = 'product-images');
