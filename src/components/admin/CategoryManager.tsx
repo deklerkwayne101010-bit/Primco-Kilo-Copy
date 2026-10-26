@@ -65,7 +65,7 @@ export const CategoryManager: React.FC = () => {
       const { error } = await supabase
         .from('categories')
         .update(formData)
-        .eq('id', editingCategory.id);
+        .eq('slug', editingCategory.slug);
       
       if (error) {
         console.error('Error updating category:', error);
@@ -280,7 +280,7 @@ export const CategoryManager: React.FC = () => {
                             <Edit size={16} />
                           </button>
                           <button
-                            onClick={() => category.id && handleDelete(category.id)}
+                            onClick={() => category.slug && handleDelete(category.slug)}
                             className="p-1.5 text-[var(--muted)] hover:text-red-400 hover:bg-red-400/10 rounded"
                           >
                             <Trash2 size={16} />

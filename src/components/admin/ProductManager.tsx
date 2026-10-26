@@ -137,7 +137,7 @@ export const ProductManager: React.FC = () => {
       const { error } = await supabase
         .from('products')
         .update(formData)
-        .eq('id', editingProduct.id);
+        .eq('sku', editingProduct.sku);
       
       if (error) {
         console.error('Error updating product:', error);
@@ -157,7 +157,7 @@ export const ProductManager: React.FC = () => {
     const { error } = await supabase
       .from('products')
       .delete()
-      .eq('id', id);
+      .eq('sku', id);
     
     if (error) {
       console.error('Error deleting product:', error);
@@ -439,14 +439,14 @@ export const ProductManager: React.FC = () => {
                           onClick={() => {
                             setEditingProduct(product);
                             setIsCreating(false);
-                            setFormData(product);
+                            setFormData({ ...product, id: product.id || product.sku });
                           }}
                           className="p-1.5 text-[var(--muted)] hover:text-[var(--blue)] hover:bg-[var(--blue)]/10 rounded"
                         >
                           <Edit size={16} />
                         </button>
                         <button
-                          onClick={() => product.id && handleDelete(product.id)}
+                          onClick={() => product.sku && handleDelete(product.sku)}
                           className="p-1.5 text-[var(--muted)] hover:text-red-400 hover:bg-red-400/10 rounded"
                         >
                           <Trash2 size={16} />
