@@ -16,6 +16,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   onSelectProduct
 }) => {
   const [quantity, setQuantity] = useState(1);
+  const [imageError, setImageError] = useState(false);
   const { addToQuote, items } = useQuote();
 
   useEffect(() => {
@@ -69,15 +70,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               )}
 
               <div className="w-full h-full flex items-center justify-center">
-                {product.imageUrl ? (
+                {product.imageUrl && !imageError ? (
                   <img 
                     src={product.imageUrl} 
                     alt={product.name} 
                     className="w-full h-full object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
+                    onError={() => setImageError(true)}
                   />
                 ) : (
                   <ProductGraphic sku={product.sku} category={product.category} name={product.name} />

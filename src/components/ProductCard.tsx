@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Product } from '../data/catalogue';
 import { useQuote } from '../context/QuoteContext';
 import { ProductGraphic } from './ProductGraphic';
@@ -12,6 +12,9 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProduct }) => {
   const { addToQuote, items } = useQuote();
   const isAlreadyInQuote = items.some(item => item.sku === product.sku);
+  const [imageError, setImageError] = useState(false);
+
+  const showImage = product.imageUrl && !imageError;
 
   return (
     <article className="group bg-[var(--grad-surface)] border border-[var(--line)] rounded-[var(--radius-lg)] overflow-hidden flex flex-col transition-all duration-[var(--dur)] ease-[var(--lift)] hover:-translate-y-1 hover:border-[var(--blue)] hover:shadow-[var(--glow-md)]">
@@ -31,21 +34,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
         )}
 
         <div className="w-full h-full transition-transform duration-300 ease-out group-hover:scale-105">
-          {product.imageUrl ? (
+          {showImage ? (
             <img 
               src={product.imageUrl} 
               alt={product.name} 
               className="w-full h-full object-contain"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                const parent = target.parentElement;
-                if (parent && !parent.querySelector('.graphic')) {
-                  const graphic = document.createElement('div');
-                  graphic.className = 'graphic w-full h-full';
-                  parent.appendChild(graphic);
-                }
-              }}
+              onError={() => setImageError(true)}
             />
           ) : (
             <ProductGraphic sku={product.sku} category={product.category} name={product.name} />
