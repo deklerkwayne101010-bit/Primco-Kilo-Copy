@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Search, Edit, Trash2, Save, X, Upload } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { Product } from '../../types/catalogue';
+import { productToDb, dbToProduct } from '../../utils/dbMapping';
 import { RANGES, CATEGORIES, PRODUCTS } from '../../data/catalogue';
 
 export const ProductManager: React.FC = () => {
@@ -54,7 +55,7 @@ export const ProductManager: React.FC = () => {
         // Fallback to static data
         setProducts(PRODUCTS as any);
       } else {
-        setProducts(data && data.length > 0 ? data : (PRODUCTS as any));
+        setProducts(data && data.length > 0 ? data.map(dbToProduct) : (PRODUCTS as any));
       }
     } catch (err) {
       console.error('Fetch error:', err);
@@ -119,13 +120,12 @@ export const ProductManager: React.FC = () => {
   const handleSave = async () => {
     if (!supabase) return;
     
-    // Clean up data - remove fields that might not exist in DB
-    const { id, ...updateData } = formData as any;
+    const dbData = productToDb(formData);
     
     if (isCreating) {
       const { error } = await supabase
         .from('products')
-        .insert([updateData]);
+        .insert([dbData]);
       
       if (error) {
         console.error('Error creating product:', error);
@@ -144,7 +144,7 @@ export const ProductManager: React.FC = () => {
     } else if (editingProduct) {
       const { error } = await supabase
         .from('products')
-        .update(updateData)
+        .update(dbData)
         .eq('sku', editingProduct.sku);
       
       if (error) {
@@ -447,7 +447,7 @@ export const ProductManager: React.FC = () => {
                           onClick={() => {
                             setEditingProduct(product);
                             setIsCreating(false);
-                            setFormData({ ...product, id: product.id || product.sku });
+                            setFormData(product);
                           }}
                           className="p-1.5 text-[var(--muted)] hover:text-[var(--blue)] hover:bg-[var(--blue)]/10 rounded"
                         >
