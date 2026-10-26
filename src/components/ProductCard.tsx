@@ -32,7 +32,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
 
         <div className="w-full h-full transition-transform duration-300 ease-out group-hover:scale-105">
           {product.imageUrl ? (
-            <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain" />
+            <img 
+              src={product.imageUrl} 
+              alt={product.name} 
+              className="w-full h-full object-contain"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent && !parent.querySelector('.graphic')) {
+                  const graphic = document.createElement('div');
+                  graphic.className = 'graphic w-full h-full';
+                  parent.appendChild(graphic);
+                }
+              }}
+            />
           ) : (
             <ProductGraphic sku={product.sku} category={product.category} name={product.name} />
           )}

@@ -70,7 +70,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               <div className="w-full h-full flex items-center justify-center">
                 {product.imageUrl ? (
-                  <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain" />
+                  <img 
+                    src={product.imageUrl} 
+                    alt={product.name} 
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
                 ) : (
                   <ProductGraphic sku={product.sku} category={product.category} name={product.name} />
                 )}
