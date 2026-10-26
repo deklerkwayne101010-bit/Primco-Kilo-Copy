@@ -15,19 +15,19 @@ export const ValetServicesPage: React.FC<ValetServicesPageProps> = ({ onNavigate
       title: 'Pre-Delivery Wash',
       desc: 'Professional hand wash and foam treatment to remove overspray dust, fingerprints, and solvent marks before customer handover.',
       icon: <Droplets size={24} className="text-[var(--blue)]" />,
-      price: 'From R450'
+
     },
     {
       title: 'Final Finish Polish',
       desc: 'Micro-fine cutting compound and swirl removal to eliminate sanding marks and hologram trails for a showroom shine.',
       icon: <Sparkles size={24} className="text-[var(--blue)]" />,
-      price: 'From R850'
+
     },
     {
       title: 'Interior Deep Clean',
       desc: 'Enzymatic upholstery cleaning, odor neutralization, and plastic/vinyl restoration for interior surfaces.',
       icon: <SprayCan size={24} className="text-[var(--blue)]" />,
-      price: 'From R650'
+
     }
   ];
 
@@ -72,9 +72,7 @@ export const ValetServicesPage: React.FC<ValetServicesPageProps> = ({ onNavigate
                 <p className="text-xs text-[var(--silver)] leading-relaxed mb-4">
                   {pkg.desc}
                 </p>
-                <div className="text-2xl font-extrabold text-[var(--blue)] mb-2">
-                  {pkg.price}
-                </div>
+
               </div>
 
               <div className="pt-4 border-t border-[var(--line)] flex items-center justify-end text-xs">
