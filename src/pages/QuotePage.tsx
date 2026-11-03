@@ -84,11 +84,34 @@ export const QuotePage: React.FC<QuotePageProps> = ({ onNavigate }) => {
       'Best regards,%0A' +
       customer.name;
     
-    fetch('/api/send-quote', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ reference, itemCount, items, customer, type: 'quote' })
-    }).catch(err => console.error('Email send failed:', err));
+    // Try API first, fall back to mailto
+    try {
+      const response = await fetch('/api/send-quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reference, itemCount, items, customer, type: 'quote' })
+      });
+      if (!response.ok) throw new Error('API failed');
+    } catch (err) {
+      console.log('Using mailto fallback');
+      const itemsList = items.map(i => 
+        i.quantity + 'x ' + (i.product ? i.product.name : i.sku) + ' (' + i.sku + ')'
+      ).join('%0A');
+      const subject = 'Quote Request ' + reference + ' - ' + itemCount + ' Items';
+      const body = 'Hello Dean and Sales Team,%0A%0A' +
+        'A new quote request has been submitted:%0A%0A' +
+        'Reference: ' + reference + '%0A' +
+        'Date: ' + new Date().toLocaleDateString('en-ZA') + '%0A' +
+        'Total Items: ' + itemCount + '%0A%0A' +
+        'Items:%0A' + itemsList + '%0A%0A' +
+        'Customer: ' + customer.name + '%0A' +
+        'Company: ' + customer.company + '%0A' +
+        'Phone: ' + customer.phone + '%0A' +
+        'Email: ' + customer.email + '%0A%0A' +
+        'Please process this request at your earliest convenience.%0A%0A' +
+        'Best regards,%0A' + customer.name;
+      window.open('mailto:sales@primeco.co.za,dean@primeco.co.za?subject=' + encodeURIComponent(subject) + '&body=' + body, '_blank');
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
