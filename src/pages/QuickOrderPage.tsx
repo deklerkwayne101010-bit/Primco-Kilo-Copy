@@ -100,6 +100,23 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
     parseCSV(sample);
   };
 
+  const sendOrderEmail = () => {
+    const itemsList = parsedItems.map(i => 
+      i.quantity + 'x ' + (i.product ? i.product.name : i.sku) + ' (' + i.sku + ')'
+    ).join('%0A');
+    
+    const subject = 'Quick Order Request - ' + parsedItems.length + ' Items';
+    const body = 'Hello Dean and Sales Team,%0A%0A' +
+      'A new quick order has been submitted:%0A%0A' +
+      'Total Items: ' + parsedItems.length + '%0A%0A' +
+      'Items:%0A' +
+      itemsList + '%0A%0A' +
+      'Please process this order at your earliest convenience.%0A%0A' +
+      'Best regards';
+    
+    window.open('mailto:sales@primeco.co.za,dean@primeco.co.za?subject=' + encodeURIComponent(subject) + '&body=' + body, '_blank');
+  };
+
   const handleAddAllToQuote = () => {
     let addedCount = 0;
     parsedItems.forEach(item => {
