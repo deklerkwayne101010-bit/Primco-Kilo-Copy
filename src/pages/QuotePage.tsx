@@ -63,6 +63,30 @@ export const QuotePage: React.FC<QuotePageProps> = ({ onNavigate }) => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const sendQuoteEmail = (reference, itemCount) => {
+    const itemsList = items.map(i => 
+      i.quantity + 'x ' + (i.product ? i.product.name : i.sku) + ' (' + i.sku + ')'
+    ).join('%0A');
+    
+    const subject = 'Quote Request ' + reference + ' - ' + itemCount + ' Items';
+    const body = 'Hello Dean and Sales Team,%0A%0A' +
+      'A new quote request has been submitted:%0A%0A' +
+      'Reference: ' + reference + '%0A' +
+      'Date: ' + new Date().toLocaleDateString('en-ZA') + '%0A' +
+      'Total Items: ' + itemCount + '%0A%0A' +
+      'Items:%0A' +
+      itemsList + '%0A%0A' +
+      'Customer: ' + customer.name + '%0A' +
+      'Company: ' + customer.company + '%0A' +
+      'Phone: ' + customer.phone + '%0A' +
+      'Email: ' + customer.email + '%0A%0A' +
+      'Please process this request at your earliest convenience.%0A%0A' +
+      'Best regards,%0A' +
+      customer.name;
+    
+    window.open('mailto:sales@primeco.co.za,dean@primeco.co.za?subject=' + encodeURIComponent(subject) + '&body=' + body, '_blank');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -81,14 +105,16 @@ export const QuotePage: React.FC<QuotePageProps> = ({ onNavigate }) => {
 
     setTimeout(() => {
       setIsSubmitting(false);
-      const ref = `PRM-Q${Math.floor(100000 + Math.random() * 900000)}`;
+      const ref = 'PRM-Q' + Math.floor(100000 + Math.random() * 900000);
+      const itemCount = items.reduce((a, b) => a + b.quantity, 0);
       setSubmittedQuote({
         reference: ref,
         date: new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'short', day: 'numeric' }),
-        itemCount: items.reduce((a, b) => a + b.quantity, 0)
+        itemCount
       });
       clearQuote();
-      showToast(`Quote request #${ref} successfully submitted to Primeco!`);
+      sendQuoteEmail(ref, itemCount);
+      showToast('Quote request #' + ref + ' successfully submitted to Primeco!');
     }, 850);
   };
 
