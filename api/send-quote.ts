@@ -12,11 +12,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Invalid request body' });
   }
 
-  // Gmail SMTP - easiest to set up
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.GMAIL_USER,
+      user: process.env.GMAIL_USER || 'deklerkwayne101010@gmail.com',
       pass: process.env.GMAIL_APP_PASSWORD
     }
   });
@@ -69,7 +68,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await transporter.sendMail({
-      from: process.env.GMAIL_USER,
+      from: process.env.GMAIL_USER || 'deklerkwayne101010@gmail.com',
       to: 'sales@primeco.co.za, dean@primeco.co.za',
       subject,
       html
