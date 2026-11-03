@@ -63,7 +63,7 @@ export const QuotePage: React.FC<QuotePageProps> = ({ onNavigate }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Check honeypot
@@ -79,13 +79,44 @@ export const QuotePage: React.FC<QuotePageProps> = ({ onNavigate }) => {
 
     setIsSubmitting(true);
 
+    const ref = `PRM-Q${Math.floor(100000 + Math.random() * 900000)}`;
+    const itemCount = items.reduce((a, b) => a + b.quantity, 0);
+
+    try {
+      await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          reference: ref,
+          customer: {
+            name: customer.name,
+            email: customer.email,
+            phone: customer.phone,
+            company: customer.company,
+            vatNumber: customer.vatNumber,
+          },
+          delivery,
+          items: items.map(item => ({
+            sku: item.sku,
+            quantity: item.quantity,
+            product: item.product,
+            name: item.product?.name,
+            category: item.product?.categoryName,
+          })),
+        }),
+      });
+    } catch (error) {
+      console.error('Failed to send quote request:', error);
+    }
+
     setTimeout(() => {
       setIsSubmitting(false);
-      const ref = `PRM-Q${Math.floor(100000 + Math.random() * 900000)}`;
       setSubmittedQuote({
         reference: ref,
         date: new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'short', day: 'numeric' }),
-        itemCount: items.reduce((a, b) => a + b.quantity, 0)
+        itemCount
       });
       clearQuote();
       showToast(`Quote request #${ref} successfully submitted to Primeco!`);
