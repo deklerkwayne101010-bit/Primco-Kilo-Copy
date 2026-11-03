@@ -114,27 +114,29 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
       'Please process this order at your earliest convenience.%0A%0A' +
       'Best regards';
     
-    try {
-      const response = await fetch('/api/send-quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ reference: 'QO-' + Date.now(), itemCount: parsedItems.length, items: parsedItems, type: 'quick-order' })
-      });
-      if (!response.ok) throw new Error('API failed');
-    } catch (err) {
-      console.log('Using mailto fallback');
-      const itemsList = parsedItems.map(i => 
-        i.quantity + 'x ' + (i.product ? i.product.name : i.sku) + ' (' + i.sku + ')'
-      ).join('%0A');
-      const subject = 'Quick Order Request';
-      const body = 'Hello Dean and Sales Team,%0A%0A' +
-        'A new quick order has been submitted:%0A%0A' +
-        'Total Items: ' + parsedItems.length + '%0A%0A' +
-        'Items:%0A' + itemsList + '%0A%0A' +
-        'Please process this order at your earliest convenience.%0A%0A' +
-        'Best regards';
-      window.open('mailto:sales@primeco.co.za,dean@primeco.co.za?subject=' + encodeURIComponent(subject) + '&body=' + body, '_blank');
-    }
+    (async () => {
+      try {
+        const response = await fetch('/api/send-quote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reference: 'QO-' + Date.now(), itemCount: parsedItems.length, items: parsedItems, type: 'quick-order' })
+        });
+        if (!response.ok) throw new Error('API failed');
+      } catch (err) {
+        console.log('Using mailto fallback');
+        const itemsList = parsedItems.map(i => 
+          i.quantity + 'x ' + (i.product ? i.product.name : i.sku) + ' (' + i.sku + ')'
+        ).join('%0A');
+        const subject = 'Quick Order Request';
+        const body = 'Hello Dean and Sales Team,%0A%0A' +
+          'A new quick order has been submitted:%0A%0A' +
+          'Total Items: ' + parsedItems.length + '%0A%0A' +
+          'Items:%0A' + itemsList + '%0A%0A' +
+          'Please process this order at your earliest convenience.%0A%0A' +
+          'Best regards';
+        window.open('mailto:sales@primeco.co.za,dean@primeco.co.za?subject=' + encodeURIComponent(subject) + '&body=' + body, '_blank');
+      }
+    })();
   };
 
   const handleAddAllToQuote = () => {
