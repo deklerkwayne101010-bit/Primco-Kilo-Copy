@@ -114,7 +114,11 @@ export const QuickOrderPage: React.FC<QuickOrderPageProps> = ({ onNavigate }) =>
       'Please process this order at your earliest convenience.%0A%0A' +
       'Best regards';
     
-    window.open('mailto:sales@primeco.co.za,dean@primeco.co.za?subject=' + encodeURIComponent(subject) + '&body=' + body, '_blank');
+    fetch('/api/send-quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reference: 'QO-' + Date.now(), itemCount: parsedItems.length, items: parsedItems, type: 'quick-order' })
+    }).catch(err => console.error('Email send failed:', err));
   };
 
   const handleAddAllToQuote = () => {

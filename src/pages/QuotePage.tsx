@@ -84,7 +84,11 @@ export const QuotePage: React.FC<QuotePageProps> = ({ onNavigate }) => {
       'Best regards,%0A' +
       customer.name;
     
-    window.open('mailto:sales@primeco.co.za,dean@primeco.co.za?subject=' + encodeURIComponent(subject) + '&body=' + body, '_blank');
+    fetch('/api/send-quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reference, itemCount, items, customer, type: 'quote' })
+    }).catch(err => console.error('Email send failed:', err));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
