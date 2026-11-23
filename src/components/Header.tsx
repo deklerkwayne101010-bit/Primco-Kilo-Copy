@@ -6,6 +6,7 @@ export type PageId =
   | 'home'
   | 'about'
   | 'catalogue'
+  | 'parts-exploded'
   | 'parts-sourcing'
   | 'quick-order'
   | 'brands'
@@ -47,6 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ activePage, onNavigate }) => {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'catalogue', label: 'Catalogue' },
+    { id: 'parts-exploded', label: 'Parts' },
     { id: 'parts-sourcing', label: 'Source' },
     { id: 'quick-order', label: 'Quick Order' },
     { id: 'brands', label: 'Brands' },

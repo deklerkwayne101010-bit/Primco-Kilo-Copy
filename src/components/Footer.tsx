@@ -56,6 +56,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWhatsApp }) =>
               <li>
                 <button
                   type="button"
+                  onClick={() => onNavigate('parts-exploded')}
+                  className="hover:text-[var(--blue)] transition-colors cursor-pointer text-left flex items-center gap-1.5"
+                >
+                  Car Parts Explorer <ArrowUpRight size={11} />
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
                   onClick={() => onNavigate('parts-sourcing')}
                   className="hover:text-[var(--blue)] transition-colors cursor-pointer text-left flex items-center gap-1.5"
                 >

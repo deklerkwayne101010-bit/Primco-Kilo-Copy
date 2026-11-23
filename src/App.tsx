@@ -22,6 +22,7 @@ import { AboutPage } from './pages/AboutPage';
 import { CataloguePage } from './pages/CataloguePage';
 import { CataloguePageC } from './pages/CataloguePageC';
 import { QuickOrderPage } from './pages/QuickOrderPage';
+import { PartsExplodedViewPage } from './pages/PartsExplodedViewPage';
 import { PartsSourcingPage } from './pages/PartsSourcingPage';
 import { BrandsPage } from './pages/BrandsPage';
 import { ValetServicesPage } from './pages/ValetServicesPage';
@@ -103,6 +104,12 @@ function AppContent() {
 
         {activePage === 'quick-order' && (
           <QuickOrderPage
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {activePage === 'parts-exploded' && (
+          <PartsExplodedViewPage
             onNavigate={handleNavigate}
           />
         )}
