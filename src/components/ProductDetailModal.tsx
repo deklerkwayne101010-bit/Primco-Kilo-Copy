@@ -69,7 +69,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               )}
 
               <div className="w-full h-full flex items-center justify-center">
-                <ProductGraphic sku={product.sku} category={product.category} name={product.name} />
+                <ProductGraphic sku={product.sku} category={product.category} name={product.name} image={product.image} />
               </div>
             </div>
 

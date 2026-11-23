@@ -4,12 +4,27 @@ interface ProductGraphicProps {
   sku: string;
   category: string;
   name: string;
+  image?: string;
   className?: string;
 }
 
-export const ProductGraphic: React.FC<ProductGraphicProps> = ({ sku, category, name, className = '' }) => {
+export const ProductGraphic: React.FC<ProductGraphicProps> = ({ sku, category, name, image, className = '' }) => {
   const cat = (category || '').toLowerCase();
   const code = (sku || '').toUpperCase();
+
+  // Real product photography takes precedence over the generated SVG.
+  if (image) {
+    return (
+      <div className={`w-full h-full flex items-center justify-center bg-gradient-to-b from-[#141920] via-[#0b0e12] to-[#06080a] p-2 relative overflow-hidden select-none ${className}`}>
+        <img
+          src={image}
+          alt={name}
+          loading="lazy"
+          className="max-w-full max-h-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.5)]"
+        />
+      </div>
+    );
+  }
 
   // Studio Lighting & Metallic Mesh Backdrop
   const baseBg = "w-full h-full bg-gradient-to-b from-[#141920] via-[#0b0e12] to-[#06080a] flex flex-col items-center justify-center p-3 relative overflow-hidden select-none";

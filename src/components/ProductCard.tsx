@@ -31,7 +31,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
         )}
 
         <div className="w-full h-full transition-transform duration-300 ease-out group-hover:scale-105">
-          <ProductGraphic sku={product.sku} category={product.category} name={product.name} />
+          <ProductGraphic sku={product.sku} category={product.category} name={product.name} image={product.image} />
         </div>
 
         {/* Hover preview eye button */}

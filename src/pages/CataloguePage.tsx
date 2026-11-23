@@ -841,6 +841,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                                     sku={product.sku}
                                     category={product.category}
                                     name={product.name}
+                                    image={product.image}
                                     className="scale-75"
                                   />
                                 </div>
@@ -993,6 +994,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                               sku={product.sku}
                               category={product.category}
                               name={product.name}
+                              image={product.image}
                               className="scale-75"
                             />
                           </div>
@@ -1087,6 +1089,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                             sku={product.sku}
                             category={product.category}
                             name={product.name}
+                            image={product.image}
                           />
                         </div>
                       </div>

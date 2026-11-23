@@ -621,6 +621,7 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
                         sku={product.sku}
                         category={product.category}
                         name={product.name}
+                        image={product.image}
                       />
                     </div>
                     <span className="metallic-badge absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider text-[var(--gold)] px-2.5 py-1 rounded-full">
