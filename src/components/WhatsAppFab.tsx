@@ -14,7 +14,7 @@ export const WhatsAppFab: React.FC<WhatsAppFabProps> = () => {
 
   const handleSend = () => {
     const encoded = encodeURIComponent(message + (totalCount > 0 ? ` (Currently reviewing ${totalCount} items in my quote request).` : ''));
-    window.open(`https://wa.me/27799011544?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/27849612234?text=${encoded}`, '_blank');
     setIsOpen(false);
   };
 

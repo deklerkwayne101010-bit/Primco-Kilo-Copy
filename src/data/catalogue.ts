@@ -1179,9 +1179,9 @@ export const TEAM_MEMBERS = [
     name: 'Dean Strydom',
     role: 'DIRECTOR / SALES',
     bio: 'Over 18 years in automotive panel beating and collision repair supply across Gauteng. Dean oversees strategic procurement, direct panel shop trade relationships, and urgent turnaround logistics.',
-    phone: '+27 (0)79 901 1544',
-    cell: '079 901 1544',
-    whatsapp: '+27799011544',
+    phone: '+27 (0)84 961 2234',
+    cell: '084 961 2234',
+    whatsapp: '+27849612234',
     email: 'dean@primeco.co.za',
     image: '/assets/images/team-dean-strydom.png',
     initials: 'DS'
@@ -1196,17 +1196,6 @@ export const TEAM_MEMBERS = [
     email: 'accounts@primeco.co.za',
     image: '/assets/images/team-lente-kemp.png',
     initials: 'LK'
-  },
-  {
-    name: 'Jacky Schutte',
-    role: 'SALES MANAGER',
-    bio: 'Customer service and sales support at Primeco Supplies.',
-    phone: '+27 (0)76 814 0493',
-    cell: '076 814 0493',
-    whatsapp: '+27768140493',
-    email: 'sales@primeco.co.za',
-    image: '',
-    initials: 'JS'
   },
   {
     name: 'Kyle Batchelor',

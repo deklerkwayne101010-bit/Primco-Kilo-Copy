@@ -170,8 +170,8 @@ export const Header: React.FC<HeaderProps> = ({ activePage, onNavigate }) => {
             </div>
             <div className="flex items-center justify-between pt-2">
               <span>Alberton Trade Direct:</span>
-              <a href="tel:+27799011544" className="text-[var(--blue)] font-bold underline">
-                079 901 1544
+              <a href="tel:+27849612234" className="text-[var(--blue)] font-bold underline">
+                084 961 2234
               </a>
             </div>
           </div>

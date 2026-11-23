@@ -28,11 +28,11 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenWhatsApp }) => {
 
         <div className="flex items-center gap-5">
           <a
-            href="tel:+27799011544"
+            href="tel:+27849612234"
             className="flex items-center gap-1.5 text-[var(--silver)] hover:text-white transition-colors"
           >
             <Phone size={11} className="text-[var(--blue)]" />
-            <span className="font-semibold font-mono text-[10px]">079 901 1544</span>
+            <span className="font-semibold font-mono text-[10px]">084 961 2234</span>
           </a>
 
           <a

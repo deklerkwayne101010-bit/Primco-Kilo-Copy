@@ -41,9 +41,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
         description="Whether you need urgent windscreen delivery, custom refinish formulations, or trade credit terms, our team is accessible by phone, WhatsApp, or email."
       />
 
-      {/* 3-Column Contact Cards */}
+      {/* 2-Column Contact Cards */}
       <Section size="sm" background="none" borderBlock>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {/* Card 1: Dean Strydom */}
           <div className="card-base p-6 flex flex-col justify-between hover:border-[var(--blue)] hover:shadow-[var(--glow-md)] transition-all">
             <div>
@@ -65,11 +65,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
 
             <div className="flex flex-col gap-2.5 pt-4 border-t border-[var(--line)] text-xs">
               <a
-                href="tel:+27799011544"
+                href="tel:+27849612234"
                 className="flex items-center gap-2 text-[var(--silver)] hover:text-white"
               >
                 <Phone size={14} className="text-[var(--blue)]" />
-                <span>Cell: 079 901 1544</span>
+                <span>Cell: 084 961 2234</span>
               </a>
               <button
                 type="button"
@@ -77,7 +77,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
                 className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold cursor-pointer text-left"
               >
                 <MessageSquare size={14} />
-                <span>WhatsApp: 079 901 1544</span>
+                <span>WhatsApp: 084 961 2234</span>
               </button>
               <a
                 href="mailto:dean@primeco.co.za"
@@ -89,47 +89,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWhat
             </div>
           </div>
 
-          {/* Card 2: Jacky Schutte */}
-          <div className="card-base p-6 flex flex-col justify-between hover:border-[var(--blue)] hover:shadow-[var(--glow-md)] transition-all">
-            <div>
-              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--blue)] mb-4 bg-[#0a0d11]" />
-              <h3 className="text-lg font-bold text-white">Jacky Schutte</h3>
-              <p className="text-xs font-bold text-[var(--blue)] uppercase tracking-wider mb-2">
-                Sales Manager
-              </p>
-              <p className="text-xs text-[var(--muted)] mb-6 leading-relaxed">
-                Client service, daily order confirmations, quote assistance, and product availability support.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-2.5 pt-4 border-t border-[var(--line)] text-xs">
-              <a
-                href="tel:+27768140493"
-                className="flex items-center gap-2 text-[var(--silver)] hover:text-white"
-              >
-                <Phone size={14} className="text-[var(--blue)]" />
-                <span>Cell: 076 814 0493</span>
-              </a>
-              <a
-                href="https://wa.me/27768140493"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold cursor-pointer text-left"
-              >
-                <MessageSquare size={14} />
-                <span>WhatsApp: 076 814 0493</span>
-              </a>
-              <a
-                href="mailto:sales@primeco.co.za"
-                className="flex items-center gap-2 text-[var(--silver)] hover:text-white truncate"
-              >
-                <Mail size={14} className="text-[var(--blue)]" />
-                <span className="truncate">sales@primeco.co.za</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Card 3: Kyle Batchelor */}
+          {/* Card 2: Kyle Batchelor */}
           <div className="card-base p-6 flex flex-col justify-between hover:border-[var(--blue)] hover:shadow-[var(--glow-md)] transition-all">
             <div>
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--blue)] mb-4 bg-[#0a0d11]" />

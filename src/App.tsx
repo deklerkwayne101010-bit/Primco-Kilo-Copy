@@ -48,7 +48,7 @@ function AppContent() {
   };
 
   const handleOpenWhatsApp = () => {
-    window.open('https://wa.me/27799011544?text=Hi%20Dean%2C%20I%20am%20enquiring%20about%20Primeco%20workshop%20supplies', '_blank');
+    window.open('https://wa.me/27849612234?text=Hi%20Dean%2C%20I%20am%20enquiring%20about%20Primeco%20workshop%20supplies', '_blank');
   };
 
   return (

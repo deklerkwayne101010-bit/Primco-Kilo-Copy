@@ -113,25 +113,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWhatsApp }) =>
                   Director / Sales
                 </p>
                 <a
-                  href="tel:+27799011544"
+                  href="tel:+27849612234"
                   className="flex items-center gap-1.5 text-xs text-[var(--silver)] hover:text-white"
                 >
                   <Phone size={12} className="text-[var(--blue)]" />
-                  <span>079 901 1544</span>
-                </a>
-              </div>
-
-              <div className="pt-2 border-t border-[var(--line)]">
-                <p className="text-xs font-bold text-white">Jacky Schutte</p>
-                <p className="text-[10px] text-[var(--blue)] font-semibold uppercase">
-                  Sales Manager
-                </p>
-                <a
-                  href="tel:+27768140493"
-                  className="flex items-center gap-1.5 text-xs text-[var(--silver)] hover:text-white"
-                >
-                  <Phone size={12} className="text-[var(--blue)]" />
-                  <span>076 814 0493</span>
+                  <span>084 961 2234</span>
                 </a>
               </div>
 
