@@ -18,6 +18,7 @@ export interface Product {
   specs?: Record<string, string>;
   imageAlt?: string;
   badge?: string;
+  image?: string;
 }
 
 export interface RangeInfo {
@@ -5372,6 +5373,7 @@ export const BRANDS = [
   { name: 'SATA', tag: 'Professional spray guns', count: 1 },
   { name: 'Klingspor', tag: 'Coated abrasives & sanding rolls', count: 1 },
   { name: 'Stanley', tag: 'Workshop tools & equipment', count: 1 },
+  { name: 'Bulldog Abrasives', tag: 'Abrasives, refinishing & workshop supplies', count: 0 },
 ];
 
 export const TEAM_MEMBERS = [

@@ -2,7 +2,9 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { PageId } from '../components/Header';
 import { useQuote } from '../context/QuoteContext';
 import { ProductGraphic } from '../components/ProductGraphic';
-import { PRODUCTS, RANGES, CATEGORIES, BRANDS, Product } from '../data/catalogue';
+import { ProductImage } from '../components/ProductImage';
+import { PRODUCTS, RANGES, CATEGORIES, BRANDS, Product, CategoryInfo, SubcategoryInfo } from '../data/catalogue';
+import { BULLDOG_PRODUCTS } from '../data/bulldog-products';
 import { PageHero } from '../components/PageHero';
 import {
   Search,
@@ -65,7 +67,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
   // Accordion state for category tree
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
-    CATEGORIES.forEach(c => {
+    mergedCategories.forEach(c => {
       init[c.slug] = c.slug === initialCategory;
     });
     return init;
@@ -149,9 +151,66 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
     addToQuote(product.sku, qty);
   };
 
+  // Combine Primeco catalogue with imported Bulldog products
+  const allProducts = useMemo(() => [...PRODUCTS, ...BULLDOG_PRODUCTS], [BULLDOG_PRODUCTS]);
+
+  // Brand filter options (Primeco brands + Bulldog, with live counts)
+  const allBrands = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const p of allProducts) counts[p.brand] = (counts[p.brand] || 0) + 1;
+    return [...BRANDS, { name: 'Bulldog Abrasives', tag: 'Abrasives, refinishing & workshop supplies', count: counts['Bulldog Abrasives'] || 0 }].sort(
+      (a, b) => b.count - a.count || a.name.localeCompare(b.name)
+    );
+  }, [allProducts]);
+
+  // Category tree merged from catalogue + imported products
+  const mergedCategories = useMemo(() => {
+    const bySlug = new Map<string, CategoryInfo>();
+    for (const c of CATEGORIES) bySlug.set(c.slug, { ...c, subcategories: [...c.subcategories] });
+    const counts: Record<string, number> = {};
+    const subCounts: Record<string, Record<string, number>> = {};
+    for (const p of allProducts) {
+      counts[p.category] = (counts[p.category] || 0) + 1;
+      if (!subCounts[p.category]) subCounts[p.category] = {};
+      subCounts[p.category][p.subcategory] = (subCounts[p.category][p.subcategory] || 0) + 1;
+    }
+    for (const p of BULLDOG_PRODUCTS) {
+      if (bySlug.has(p.category)) continue;
+      bySlug.set(p.category, {
+        slug: p.category,
+        code: p.categoryCode,
+        name: p.categoryName,
+        range: p.range,
+        description: `Imported ${p.categoryName} range from Bulldog Abrasives.`,
+        productCount: 0,
+        iconName: 'Box',
+        subcategories: [],
+      });
+    }
+    // finalize counts + subcategories
+    const result: CategoryInfo[] = [];
+    for (const entry of bySlug.values()) {
+      const subcats: SubcategoryInfo[] = [];
+      const subcMap = subCounts[entry.slug] || {};
+      // preserve existing subcategories then add imported ones
+      const seen = new Set<string>();
+      for (const s of entry.subcategories) {
+        seen.add(s.slug);
+        subcats.push({ ...s, count: subcMap[s.slug] ?? s.count });
+      }
+      const importedSubcats = Object.entries(subcMap).filter(([slug]) => !seen.has(slug));
+      for (const [slug, count] of importedSubcats) {
+        const p = allProducts.find(x => x.category === entry.slug && x.subcategory === slug)!;
+        subcats.push({ slug, code: p.subcategoryCode, name: p.subcategoryName, count });
+      }
+      result.push({ ...entry, productCount: counts[entry.slug] ?? entry.productCount, subcategories: subcats });
+    }
+    return result.sort((a, b) => b.productCount - a.productCount || a.name.localeCompare(b.name));
+  }, [allProducts]);
+
   // Filter products logic
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((item) => {
+    return allProducts.filter((item) => {
       // Range filter
       if (selectedRange !== 'all' && item.range !== selectedRange) {
         return false;
@@ -225,7 +284,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
     inStockOnly;
 
   // Active category & subcategory info for banner/breadcrumbs
-  const currentCategoryObj = CATEGORIES.find(c => c.slug === selectedCategory);
+  const currentCategoryObj = mergedCategories.find(c => c.slug === selectedCategory);
   const currentSubcategoryObj = currentCategoryObj?.subcategories.find(s => s.slug === selectedSubcategory);
 
   // Category Icon Resolver
@@ -269,16 +328,15 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
         <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono ${
           selectedCategory === 'all' ? 'bg-black/30 text-white' : 'bg-[#1b222a] text-[var(--muted)]'
         }`}>
-          {PRODUCTS.length}
+          {allProducts.length}
         </span>
       </button>
 
       {/* Category Accordion Items */}
-      {CATEGORIES.map((cat) => {
+      {mergedCategories.map((cat) => {
         const isSelected = selectedCategory === cat.slug;
         const isExpanded = !!expandedCategories[cat.slug];
-        // Calculate count of matching products currently in DB
-        const catProductCount = PRODUCTS.filter(p => p.category === cat.slug).length;
+        const catProductCount = cat.productCount;
 
         return (
           <div key={cat.slug} className="flex flex-col border-b border-[var(--line)]/50 pb-1">
@@ -315,7 +373,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
               <div className="pl-6 pr-2 py-1 flex flex-col gap-0.5 animate-in slide-in-from-top-1 duration-150">
                 {cat.subcategories.map((sub) => {
                   const isSubSelected = selectedCategory === cat.slug && selectedSubcategory === sub.slug;
-                  const subProductCount = PRODUCTS.filter(p => p.subcategory === sub.slug).length;
+                  const subProductCount = sub.count;
 
                   return (
                     <button
@@ -445,7 +503,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
               <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted)] mr-1">
                 Quick Category Jump:
               </span>
-              {CATEGORIES.map(cat => {
+              {mergedCategories.map(cat => {
                 const isActive = selectedCategory === cat.slug;
                 return (
                   <button
@@ -531,7 +589,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                   className="w-full bg-[#111418] border border-[var(--line)] rounded-[var(--radius-sm)] text-xs text-white p-2 outline-none focus:border-[var(--blue)]"
                 >
                   <option value="all">All Authorized Brands</option>
-                  {BRANDS.map(b => (
+                  {allBrands.map(b => (
                     <option key={b.name} value={b.name}>{b.name}</option>
                   ))}
                 </select>
@@ -837,10 +895,12 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                                   className="w-10 h-9 rounded bg-[#07090c] border border-[var(--line)] overflow-hidden flex items-center justify-center shrink-0 cursor-pointer hover:border-[var(--blue)] transition-colors"
                                   title="View product"
                                 >
-                                  <ProductGraphic
+                                  <ProductImage
                                     sku={product.sku}
                                     category={product.category}
                                     name={product.name}
+                                    image={product.image}
+                                    imageAlt={product.imageAlt}
                                     className="scale-75"
                                   />
                                 </div>
@@ -989,10 +1049,12 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                             onClick={() => onSelectProduct(product)}
                             className="w-11 h-10 rounded bg-[#07090c] border border-[var(--line)] overflow-hidden flex items-center justify-center shrink-0 cursor-pointer"
                           >
-                            <ProductGraphic
+                            <ProductImage
                               sku={product.sku}
                               category={product.category}
                               name={product.name}
+                              image={product.image}
+                              imageAlt={product.imageAlt}
                               className="scale-75"
                             />
                           </div>
@@ -1083,10 +1145,12 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                         </span>
 
                         <div className="w-full h-full transition-transform duration-300 ease-out group-hover:scale-105">
-                          <ProductGraphic
+                          <ProductImage
                             sku={product.sku}
                             category={product.category}
                             name={product.name}
+                            image={product.image}
+                            imageAlt={product.imageAlt}
                           />
                         </div>
                       </div>
@@ -1304,7 +1368,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                   className="w-full bg-[#111418] border border-[var(--line)] rounded-[var(--radius-sm)] text-xs text-white p-2"
                 >
                   <option value="all">All Brands</option>
-                  {BRANDS.map(b => (
+                  {allBrands.map(b => (
                     <option key={b.name} value={b.name}>{b.name}</option>
                   ))}
                 </select>
