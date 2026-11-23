@@ -299,14 +299,16 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                 <span className="text-[10px] px-1.5 py-0.2 rounded font-mono bg-[#111418] border border-[var(--line)] text-[var(--muted)]">
                   {catProductCount}
                 </span>
-                <button
-                  type="button"
-                  onClick={(e) => toggleCategoryExpand(cat.slug, e)}
-                  className="p-1 text-[var(--muted)] hover:text-white"
-                  aria-label={`Toggle ${cat.name} subcategories`}
-                >
-                  {isExpanded ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
-                </button>
+                {cat.subcategories.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={(e) => toggleCategoryExpand(cat.slug, e)}
+                    className="p-1 text-[var(--muted)] hover:text-white"
+                    aria-label={`Toggle ${cat.name} subcategories`}
+                  >
+                    {isExpanded ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
+                  </button>
+                )}
               </div>
             </div>
 
@@ -352,7 +354,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
       <PageHero
         eyebrow="ENGINEERING & WORKSHOP SUPPLY"
         title="Product Catalogue"
-        description="Certified collision fasteners, abrasives, vehicle glass, mechanical parts, and refinish systems stocked at our Alberton distribution depot."
+        description="Genuine Carbon body repair systems, straightening, pulling and spot welding tools stocked at our Alberton distribution depot."
       />
 
       {/* Top Banner (EIS Industrial Header) */}
@@ -428,7 +430,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                 {currentSubcategoryObj ? currentSubcategoryObj.name : currentCategoryObj ? currentCategoryObj.name : 'Engineering & Workshop Supply Catalogue'}
               </h1>
               <p className="text-xs sm:text-sm text-[var(--muted)] mt-1 max-w-2xl">
-                Browse our full inventory of certified collision fasteners, abrasives, vehicle glass, mechanical parts, and refinish systems stocked at our Alberton distribution depot.
+                Browse our full inventory of genuine Carbon body repair systems, straightening, pulling and spot welding tools stocked at our Alberton distribution depot.
               </p>
             </div>
 
@@ -443,7 +445,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
           <div className="mt-6 pt-4 border-t border-[var(--line)]/70">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted)] mr-1">
-                Quick Category Jump:
+                Shop by Brand:
               </span>
               {CATEGORIES.map(cat => {
                 const isActive = selectedCategory === cat.slug;
@@ -483,7 +485,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                 <div className="flex items-center gap-2">
                   <Filter size={14} className="text-[var(--blue)]" />
                   <h3 className="text-xs font-bold uppercase tracking-wider text-white">
-                    Product Categories
+                    Shop by Brand
                   </h3>
                 </div>
                 {selectedCategory !== 'all' && (
@@ -626,7 +628,7 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({
                   className="lg:hidden flex items-center justify-center gap-2 py-2 px-3 rounded-[var(--radius-md)] bg-[#141a21] border border-[var(--line)] text-xs text-white hover:border-[var(--blue)] cursor-pointer"
                 >
                   <Filter size={14} className="text-[var(--blue)]" />
-                  <span>Category Directory & Filters</span>
+                  <span>Brand Directory & Filters</span>
                   {hasActiveFilters && (
                     <span className="w-2 h-2 rounded-full bg-[var(--blue)]" />
                   )}

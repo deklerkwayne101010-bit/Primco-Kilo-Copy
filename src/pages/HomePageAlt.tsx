@@ -129,7 +129,7 @@ export const HomePageAlt: React.FC<HomePageAltProps> = ({
       <Section size="sm" background="none" borderBlock>
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted)] mr-1">
-            Shop by category:
+            Shop by brand:
           </span>
           {CATEGORIES.map((cat) => (
             <button
@@ -180,7 +180,7 @@ export const HomePageAlt: React.FC<HomePageAltProps> = ({
           eyebrow="PRODUCT DIVISIONS"
           title={
             <>
-              Three supply{' '}
+              Our supply{' '}
               <span className="text-[var(--blue)]">divisions</span>
             </>
           }

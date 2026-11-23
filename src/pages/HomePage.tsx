@@ -206,7 +206,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
         <SectionHead
           eyebrow="PRODUCT DIVISIONS"
           title={<>Engineered for <span className="text-[var(--blue)]">Collision Repairers</span></>}
-          description="Three dedicated supply divisions keeping panel shops and commercial workshops equipped."
+          description="Dedicated supply divisions keeping panel shops and commercial workshops equipped."
           align="between"
           action={
             <button
@@ -272,8 +272,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectProduct 
       <Section size="md" background="none" borderBlock>
         <SectionHead
           eyebrow="EXPANSIVE WORKSHOP INVENTORY"
-          title="Browse by Workshop Category"
-          description="Everything from panel clips and fender hardware to 2K clearcoats and spray booth respiratory kits."
+          title="Browse by Brand"
+          description="Genuine Carbon body repair systems, straightening, pulling and spot welding tools for professional panel shops."
           align="start"
         />
 

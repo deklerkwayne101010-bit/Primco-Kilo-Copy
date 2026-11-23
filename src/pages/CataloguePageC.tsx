@@ -230,8 +230,8 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
               Product Catalogue
             </h1>
             <p className="text-sm text-[var(--muted)] max-w-xl leading-relaxed mb-8">
-              Certified collision fasteners, abrasives, vehicle glass, mechanical
-              parts, and refinish systems stocked at our Alberton depot.
+              Genuine Carbon body repair systems, straightening, pulling and spot
+              welding tools stocked at our Alberton depot.
             </p>
 
             {/* Big premium search */}
@@ -443,7 +443,7 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
           <aside className="w-full md:w-56 shrink-0 md:sticky md:top-24">
             <div className="glass-panel rounded-[var(--radius-xl)] p-4 flex flex-col gap-1 border border-[var(--line)]">
               <h3 className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[var(--muted)] px-1 pb-2">
-                Main Categories
+                Brands
               </h3>
 
               {/* All Products rung */}
@@ -492,7 +492,7 @@ export const CataloguePageC: React.FC<CataloguePageCProps> = ({
           </aside>
 
           {/* -------- MIDDLE: SUBCATEGORIES RAIL (drill-down) -------- */}
-          {selectedCategory !== 'all' && currentCategoryObj && (
+          {selectedCategory !== 'all' && currentCategoryObj && currentCategoryObj.subcategories.length > 0 && (
             <aside className="sub-rail w-full md:w-60 shrink-0 md:sticky md:top-24">
               <div className="glass-panel rounded-[var(--radius-xl)] p-4 flex flex-col gap-1.5 border border-[var(--gold)]/30 shadow-[var(--glow-premium)]">
                 <div className="flex items-center gap-2 pb-2 mb-1 border-b border-[var(--line)]">

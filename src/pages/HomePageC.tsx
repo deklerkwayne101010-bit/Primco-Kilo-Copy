@@ -134,7 +134,7 @@ export const HomePageC: React.FC<HomePageCProps> = ({
       <Section size="sm" background="none" borderBlock>
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--gold)] mr-1">
-            Shop by category:
+            Shop by brand:
           </span>
           {CATEGORIES.map((cat) => (
             <button
@@ -190,7 +190,7 @@ export const HomePageC: React.FC<HomePageCProps> = ({
           eyebrow="Product Divisions"
           title={
             <>
-              Three supply{' '}
+              Our supply{' '}
               <span className="premium-text">divisions</span>
             </>
           }
