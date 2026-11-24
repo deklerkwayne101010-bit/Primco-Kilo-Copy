@@ -20,6 +20,7 @@ import { Product } from './data/catalogue';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { CataloguePage } from './pages/CataloguePage';
+import { AutomotivePartsPage } from './pages/AutomotivePartsPage';
 import { CataloguePageC } from './pages/CataloguePageC';
 import { QuickOrderPage } from './pages/QuickOrderPage';
 import { PartsSourcingPage } from './pages/PartsSourcingPage';
@@ -99,6 +100,10 @@ function AppContent() {
               onSelectProduct={setSelectedProduct}
             />
           )
+        )}
+
+        {activePage === 'automotive-parts' && (
+          <AutomotivePartsPage onNavigate={handleNavigate} />
         )}
 
         {activePage === 'quick-order' && (
